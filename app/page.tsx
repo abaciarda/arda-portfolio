@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="container mx-auto grid lg:grid-cols-2 gap-10 pt-12 px-4">
+      <section className="container mx-auto grid lg:grid-cols-2 gap-10 pt-12 md:pb-12 2xl:pb-0 px-4">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
             <p className="text-2xl font-semibold">Hakkımda</p>

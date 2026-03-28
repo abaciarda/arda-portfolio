@@ -1,0 +1,95 @@
+{
+    "projects": [
+        {
+            "title": "Arda Portfolio",
+            "href": "https://github.com/abaciarda/arda-portfolio",
+            "date": "28.03.26",
+            "description": "Kişisel portfolyo sitesi. Modern frontend teknolojileri ile geliştirildi.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/arda-portfolio",
+            "commits": 2,
+            "language": {
+                "name": "TypeScript",
+                "color": "bg-blue-400"
+            },
+            "icon": "github"
+        },
+        {
+            "title": "Fon Radar – Web App",
+            "href": "https://github.com/abaciarda/Fon-Radar-Web-App",
+            "date": "28.03.26",
+            "description": "Fon Radar, finansal veri ve fon analizlerini görselleştiren web uygulamasıdır.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/Fon-Radar-Web-App",
+            "commits": 12,
+            "language": {
+                "name": "TypeScript",
+                "color": "bg-blue-400"
+            },
+            "icon": "github"
+        },
+        {
+            "title": "Modamix Armatür – Freelance Project (Closed Source)",
+            "href": "https://modamix.com.tr",
+            "date": "2024",
+            "description": "Closed-source e-ticaret ve kurumsal web platformu. Laravel tabanlı sistem ile ürün yönetimi, kategori yapısı ve CRUD işlemleri geliştirilmiştir. Mobil uyumlu arayüz, SEO optimizasyonu ve performans odaklı yapı ile müşteri dönüşüm oranlarının artırılması hedeflenmiştir. www.modamix.com.tr projesi için geliştirilmiştir.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "commits": 0,
+            "language": {
+                "name": "Laravel",
+                "color": "bg-red-500"
+            },
+            "icon": "laravel"
+        },
+        {
+            "title": "Java Banking System",
+            "href": "https://github.com/abaciarda/java-banking-system",
+            "date": "22.10.25",
+            "description": "OOP prensipleri kullanılarak geliştirilmiş konsol tabanlı bir bankacılık simülasyonudur.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/java-banking-system",
+            "commits": 33,
+            "language": {
+                "name": "Java",
+                "color": "bg-orange-400"
+            },
+            "icon": "github"
+        },
+        {
+            "title": "Atlasia Blog – Web App (Closed Source)",
+            "href": "#",
+            "date": "2026",
+            "description": "Closed-source freelance proje. Laravel tabanlı web platformu üzerinde üyelik başvuru sistemi, içerik yönetimi ve yönetim paneli geliştirilmiştir. TailwindCSS ile responsive ve SEO uyumlu bir arayüz oluşturulmuş, başvuru süreçlerinin dijitalleştirilmesi ve kullanıcı deneyiminin iyileştirilmesi hedeflenmiştir.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "commits": 0,
+            "language": {
+                "name": "TypeScript",
+                "color": "bg-blue-400"
+            },
+            "icon": "laravel"
+        },
+        {
+            "title": "VerseCMS – Freelance Web App (Closed Source)",
+            "href": "#",
+            "date": "2025",
+            "description": "Closed-source CMS projesi. Next.js 15, TypeScript ve Tailwind CSS/SCSS ile geliştirilmiş modern içerik yönetim sistemi. MySQL ve Redis ile performans ve caching yapısı kurulmuş, Next-Auth v4 ile güvenli kimlik doğrulama sağlanmıştır. Kullanıcı yönetimi, içerik sistemi, sosyal modüller, rozet yapıları, haber sistemi, çoklu dil desteği ve admin paneli içeren modüler bir mimariye sahiptir.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "commits": 0,
+            "language": {
+                "name": "TypeScript",
+                "color": "bg-blue-400"
+            },
+            "icon": "laravel"
+        },
+        {
+            "title": "Ayşenur Uzun – Freelance Website (Closed Source)",
+            "href": "#",
+            "date": "2025",
+            "description": "Closed-source kurumsal web geliştirme projesi. Laravel 9, MySQL ve JavaScript kullanılarak dinamik içerik yönetimi sağlanan bir web sitesi geliştirilmiştir. Admin panel üzerinden içerik ve veri yönetimi, responsive UI ve SEO optimizasyonu uygulanmıştır.",
+            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "commits": 0,
+            "language": {
+                "name": "Laravel",
+                "color": "bg-red-500"
+            },
+            "icon": "laravel"
+        }
+    ]
+}
