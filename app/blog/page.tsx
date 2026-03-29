@@ -43,7 +43,7 @@ export default function BlogPage() {
   return (
     <div className="flex flex-col">
       <header className="h-120 relative flex items-center justify-center">
-        <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat dark:brightness-[0.93] dark:-hue-rotate-[-160rad] dark:invert dark:saturate-[0.15]"></div>
+        <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat brightness-[0.93] -hue-rotate-[-160rad] invert saturate-[0.15]"></div>
         <div className="absolute inset-0 size-full dot-splash"></div>
         <div className="container w-full mx-auto px-4 relative z-10 flex flex-col gap-2">
           <h1 className="text-3xl font-bold tracking-tight">

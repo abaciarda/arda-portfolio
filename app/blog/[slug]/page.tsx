@@ -47,12 +47,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title: POST.title,
             description: POST.subtitle,
             type: "article",
-            publishedTime: new Date().toISOString(), // Update this to use actual date when using real data
+            publishedTime: new Date().toISOString(),
             authors: [POST.author],
             url: `https://ardaabaci.com/blog/${slug}`,
             images: [
                 {
-                    url: "/assets/images/blog/tailwind-article.webp", // Mock image representation
+                    url: "/assets/images/blog/tailwind-article.webp",
                     width: 1200,
                     height: 630,
                     alt: POST.title,
@@ -81,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
                 <Link
                     href="/blog"
-                    className="absolute top-24 left-4 md:left-8 z-20 flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground/80 transition-colors"
+                    className="absolute top-24 left-4 md:left-8 z-20 hidden md:flex items-center gap-1.5 text-xs text-foreground/40 hover:text-foreground/80 transition-colors"
                 >
                     <FaChevronLeft className="text-[10px]" />
                     Blog'a dön

@@ -7,21 +7,21 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Projeler",
-  description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar ve freelance işlerim.",
-  openGraph: {
-    title: "Arda Abacı | Projeler",
-    description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar.",
-    url: "https://ardaabaci.com/projects",
-    images: [{ url: "/assets/images/avatar.jpeg" }],
-  },
+    title: "Projeler",
+    description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar ve freelance işlerim.",
+    openGraph: {
+        title: "Arda Abacı | Projeler",
+        description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar.",
+        url: "https://ardaabaci.com/projects",
+        images: [{ url: "/assets/images/avatar.jpeg" }],
+    },
 };
 
 export default function ProjectsPage() {
     return (
         <div className="flex flex-col">
             <header className="h-120 relative flex items-center justify-center">
-                <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat dark:brightness-[0.93] dark:-hue-rotate-[-160rad] dark:invert dark:saturate-[0.15]"></div>
+                <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat brightness-[0.93] -hue-rotate-[-160rad] invert saturate-[0.15]"></div>
                 <div className="absolute inset-0 size-full dot-splash"></div>
                 <div className="container w-full mx-auto px-4 relative z-10 flex flex-col gap-1">
                     <h1 className="text-3xl font-semibold">

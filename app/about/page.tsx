@@ -8,21 +8,21 @@ import { SiGit, SiLaravel, SiMongodb, SiMysql, SiNextdotjs, SiTailwindcss, SiTyp
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Hakkımda",
-  description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum. Eğitim geçmişim ve odak alanlarımı keşfedin.",
-  openGraph: {
-    title: "Arda Abacı | Hakkımda",
-    description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum.",
-    url: "https://ardaabaci.com/about",
-    images: [{ url: "/assets/images/avatar.jpeg" }],
-  },
+    title: "Hakkımda",
+    description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum. Eğitim geçmişim ve odak alanlarımı keşfedin.",
+    openGraph: {
+        title: "Arda Abacı | Hakkımda",
+        description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum.",
+        url: "https://ardaabaci.com/about",
+        images: [{ url: "/assets/images/avatar.jpeg" }],
+    },
 };
 
 export default function ProjectsPage() {
     return (
         <div className="flex flex-col">
             <header className="h-120 relative flex items-center justify-center">
-                <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat dark:brightness-[0.93] dark:-hue-rotate-[-160rad] dark:invert dark:saturate-[0.15]"></div>
+                <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat brightness-[0.93] -hue-rotate-[-160rad] invert saturate-[0.15]"></div>
                 <div className="absolute inset-0 size-full dot-splash"></div>
                 <div className="container w-full mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center gap-5">
                     <div className="min-w-38 min-h-38 flex items-center justify-center rounded-full relative top-2 bg-center! bg-cover!" style={{ background: "url(/assets/images/avatar.jpeg)" }} />
