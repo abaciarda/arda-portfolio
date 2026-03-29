@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       <header className="h-120 relative flex items-center justify-center">
-        <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat dark:brightness-[0.93] -hue-rotate-[-160rad] invert saturate-[0.15]"></div>
+        <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat brightness-[0.93] -hue-rotate-[-160rad] invert saturate-[0.15]"></div>
         <div className="absolute inset-0 size-full dot-splash"></div>
         <div className="relative z-10 flex flex-col items-center justify-center gap-1">
           <div className="w-32 h-32 flex items-center justify-center rounded-full mb-2 bg-center! bg-cover!" style={{ background: "url(/assets/images/avatar.jpeg)" }} />
