@@ -20,11 +20,11 @@ export default function ProjectsPage() {
                         Açık kaynak projelerde ve bireysel çalışmalarda full-stack geliştirme, backend API tasarımı, frontend arayüz geliştirme ve component mimarisi üzerine yaptığım katkıları içerir.
                     </h3>
                     <div className="social-links flex items-center gap-3 relative top-4">
-                        <Link href="#" className="flex items-center gap-2 px-4 py-1.5 bg-black/20 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(0,0,0,0.35)] hover:shadow-[0_3px_0_0_rgba(0,0,0,0.5)] hover:bg-black/30 active:translate-y-px">
+                        <Link href="https://github.com/abaciarda" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-1.5 bg-black/20 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(0,0,0,0.35)] hover:shadow-[0_3px_0_0_rgba(0,0,0,0.5)] hover:bg-black/30 active:translate-y-px">
                             <FaGithub />
                             <span className="text-sm text-white/80 hover:text-white">Github</span>
                         </Link>
-                        <Link href="#" className="flex items-center gap-2 px-4 py-1.5 bg-[#0A66C2]/10 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(10,102,194,0.25)] hover:shadow-[0_3px_0_0_rgba(10,102,194,0.45)] hover:bg-[#0A66C2]/20 active:translate-y-px group">
+                        <Link href="https://www.linkedin.com/in/arda-abacı-631302320/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-1.5 bg-[#0A66C2]/10 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(10,102,194,0.25)] hover:shadow-[0_3px_0_0_rgba(10,102,194,0.45)] hover:bg-[#0A66C2]/20 active:translate-y-px group">
                             <FaLinkedin className="text-[#0A66C2]" />
                             <span className="text-sm text-white/80 group-hover:text-white">LinkedIn</span>
                         </Link>
@@ -35,10 +35,10 @@ export default function ProjectsPage() {
             <section className="container mx-auto pt-12 pb-12 px-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 border border-foreground/10 border-t border-b-0 border-r-0">
                     {projectItems.projects.map((item, index) => (
-                        <Link href={item.href} className="project-card" key={index} target="_blank">
+                        <Link href={item.href} className="project-card" key={index} target="_blank" rel="noopener noreferrer">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-2">
-                                    {item.href !== '#' && item.href.startsWith('https://github.com') && ( 
+                                    {item.href !== '#' && item.href.startsWith('https://github.com') && (
                                         <SiGithub />
                                     )}
                                     <span className="text-sm relative top-[0.45px]">{item.title}</span>
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
                             <Image className="rounded max-h-[230px]" src={item.image} width={500} height={200} alt="Github Repository Image" />
                             <p className="text-sm text-foreground/70 font-light">{item.description}</p>
                             <div className="flex items-center gap-4">
-                                {item.commits > 0 && 
+                                {item.commits > 0 &&
                                     <div className="flex items-center gap-1">
                                         <GoCommit className="text-sm" />
                                         <span className="text-xs text-foreground/70 font-light">{item.commits}</span>

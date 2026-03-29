@@ -9,16 +9,16 @@ export default function Home() {
         <div className="main-splash absolute inset-0 bg-position-[center_-116px] bg-no-repeat dark:brightness-[0.93] dark:-hue-rotate-[-160rad] dark:invert dark:saturate-[0.15]"></div>
         <div className="absolute inset-0 size-full dot-splash"></div>
         <div className="relative z-10 flex flex-col items-center justify-center gap-1">
-          <div className="w-32 h-32 flex items-center justify-center rounded-full mb-2 bg-center! bg-cover!" style={{ background: "url(/assets/images/avatar.jpeg)"}} />
+          <div className="w-32 h-32 flex items-center justify-center rounded-full mb-2 bg-center! bg-cover!" style={{ background: "url(/assets/images/avatar.jpeg)" }} />
           <h1 className="text-3xl font-semibold">Merhaba, Ben Arda 👋</h1>
           <h3 className="text-lg text-foreground/50 font-extralight">Jr. Full-Stack Web Developer</h3>
 
           <div className="social-links flex items-center gap-3 relative top-4">
-            <Link href="#" className="flex items-center gap-2 px-4 py-1.5 bg-black/20 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(0,0,0,0.35)] hover:shadow-[0_3px_0_0_rgba(0,0,0,0.5)] hover:bg-black/30 active:translate-y-px">
+            <Link href="https://github.com/abaciarda" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-1.5 bg-black/20 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(0,0,0,0.35)] hover:shadow-[0_3px_0_0_rgba(0,0,0,0.5)] hover:bg-black/30 active:translate-y-px">
               <FaGithub />
               <span className="text-sm text-white/80 hover:text-white">Github</span>
             </Link>
-            <Link href="#" className="flex items-center gap-2 px-4 py-1.5 bg-[#0A66C2]/10 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(10,102,194,0.25)] hover:shadow-[0_3px_0_0_rgba(10,102,194,0.45)] hover:bg-[#0A66C2]/20 active:translate-y-px group">
+            <Link href="https://www.linkedin.com/in/arda-abacı-631302320/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-1.5 bg-[#0A66C2]/10 rounded transition-all duration-300 shadow-[0_2px_0_0_rgba(10,102,194,0.25)] hover:shadow-[0_3px_0_0_rgba(10,102,194,0.45)] hover:bg-[#0A66C2]/20 active:translate-y-px group">
               <FaLinkedin className="text-[#0A66C2]" />
               <span className="text-sm text-white/80 group-hover:text-white">LinkedIn</span>
             </Link>
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="container mx-auto grid lg:grid-cols-2 gap-10 pt-12 md:pb-12 2xl:pb-0 px-4">
+      <section className="container mx-auto grid lg:grid-cols-2 gap-10 pt-12 pb-12 2xl:pb-0 px-4">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
             <p className="text-2xl font-semibold">Hakkımda</p>
@@ -179,14 +179,14 @@ export default function Home() {
             <div className="flex items-center gap-1 font-light text-foreground/50">
               <p>28 Mar -</p>
               <p>✨ Auth has been implemented</p>
-              <Link href={'#'} className="hover:text-white transition-colors">
+              <Link href="https://github.com/abaciarda/nextjs-blog-project" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 abaciarda/nextjs-blog-project
               </Link>
             </div>
             <div className="flex items-center gap-1 font-light text-foreground/50">
               <p>28 Mar -</p>
               <p>✨ Auth has been implemented</p>
-              <Link href={'#'} className="hover:text-white transition-colors">
+              <Link href="https://github.com/abaciarda/nextjs-blog-project" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
                 abaciarda/nextjs-blog-project
               </Link>
             </div>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { SiTailwindcss } from "react-icons/si";
 import TableOfContents from "../components/TableOfContents";
 import CodeBlock from "../components/CodeBlock";
@@ -79,6 +79,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             style={{ backgroundImage: "url(/assets/images/avatar.jpeg)" }}
                         />
                         <span className="text-sm text-foreground/60 font-light">{POST.author}</span>
+                    </div>
+
+                    <div className="social-links flex items-center gap-2 relative mt-2">
+                        <Link href="https://github.com/abaciarda" target="_blank" rel="noopener noreferrer" className="p-1.5 text-foreground/40 hover:text-white transition-colors">
+                            <FaGithub className="text-sm" />
+                        </Link>
+                        <Link href="https://www.linkedin.com/in/arda-abacı-631302320/" target="_blank" rel="noopener noreferrer" className="p-1.5 text-foreground/40 hover:text-[#0A66C2] transition-colors">
+                            <FaLinkedin className="text-sm" />
+                        </Link>
+                        <Link href="https://www.instagram.com/ardaabacii_/" target="_blank" rel="noopener noreferrer" className="p-1.5 text-foreground/40 hover:text-[#E1306C] transition-colors">
+                            <FaInstagram className="text-sm" />
+                        </Link>
                     </div>
                 </div>
             </header>

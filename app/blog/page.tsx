@@ -44,7 +44,7 @@ export default function BlogPage() {
       </header>
 
       <section className="container mx-auto pt-12 pb-12 px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-foreground/10 border-t border-b-0 border-r-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 border border-foreground/10 border-t border-b-0 border-r-0">
           {SAMPLE_POSTS.map((post) => (
             <BlogCard key={post.slug} {...post} />
           ))}
