@@ -71,7 +71,7 @@ export default function ProjectsPage() {
                         <div className="flex flex-col gap-4">
                             <h2 className="text-xl font-semibold">Eğitim</h2>
                             <p className="text-foreground/60 leading-relaxed">
-                                Şu anda İstanbul Arel Üniversitesi Bilgisayar Mühendisliği (Türkçe) 2. sınıf öğrencisiyim.
+                                Şu anda İstanbul Arel Üniversitesi Bilgisayar Mühendisliği 2. sınıf öğrencisiyim.
                                 Algoritma, veri yapıları ve yazılım mühendisliği temelleri üzerine çalışıyor, öğrendiklerimi pratik projelerle pekiştiriyorum.
                             </p>
                             <p className="text-foreground/60 leading-relaxed">

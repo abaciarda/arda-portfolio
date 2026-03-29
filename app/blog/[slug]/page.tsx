@@ -87,7 +87,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     Blog'a dön
                 </Link>
 
-                <div className="container w-full mx-auto px-4 relative z-20 flex flex-col gap-3 max-w-3xl">
+                <div className="container w-full mx-auto px-4 relative z-20 flex flex-col gap-3 max-w-3xl pt-12 md:pt-0">
                     <div className="flex items-center gap-2 flex-wrap">
                         <Badge color="blue">Tasarım</Badge>
                         <span className="text-[10px] text-foreground/30">•</span>

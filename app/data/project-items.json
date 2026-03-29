@@ -31,7 +31,7 @@
             "href": "https://modamix.com.tr",
             "date": "2024",
             "description": "Closed-source e-ticaret ve kurumsal web platformu. Laravel tabanlı sistem ile ürün yönetimi, kategori yapısı ve CRUD işlemleri geliştirilmiştir. Mobil uyumlu arayüz, SEO optimizasyonu ve performans odaklı yapı ile müşteri dönüşüm oranlarının artırılması hedeflenmiştir. www.modamix.com.tr projesi için geliştirilmiştir.",
-            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "image": "/assets/images/repo-placeholder.webp",
             "commits": 0,
             "language": {
                 "name": "Laravel",
@@ -56,8 +56,8 @@
             "title": "Atlasia Blog – Web App (Closed Source)",
             "href": "#",
             "date": "2026",
-            "description": "Closed-source freelance proje. Laravel tabanlı web platformu üzerinde üyelik başvuru sistemi, içerik yönetimi ve yönetim paneli geliştirilmiştir. TailwindCSS ile responsive ve SEO uyumlu bir arayüz oluşturulmuş, başvuru süreçlerinin dijitalleştirilmesi ve kullanıcı deneyiminin iyileştirilmesi hedeflenmiştir.",
-            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "description": "Next.js 16, TypeScript ve Tailwind CSS 4 kullanılarak geliştirilen modern ve performans odaklı blog platformu. MongoDB ve Mongoose ile veritabanı yönetimi, Better Auth ile güvenli kimlik doğrulama, Cloudinary görsel entegrasyonu ve detaylı bir admin paneline sahiptir. Responsive arayüz ve SEO optimizasyonu ön planda tutulmuştur.",
+            "image": "/assets/images/repo-placeholder.webp",
             "commits": 0,
             "language": {
                 "name": "TypeScript",
@@ -70,7 +70,7 @@
             "href": "#",
             "date": "2025",
             "description": "Closed-source CMS projesi. Next.js 15, TypeScript ve Tailwind CSS/SCSS ile geliştirilmiş modern içerik yönetim sistemi. MySQL ve Redis ile performans ve caching yapısı kurulmuş, Next-Auth v4 ile güvenli kimlik doğrulama sağlanmıştır. Kullanıcı yönetimi, içerik sistemi, sosyal modüller, rozet yapıları, haber sistemi, çoklu dil desteği ve admin paneli içeren modüler bir mimariye sahiptir.",
-            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "image": "/assets/images/repo-placeholder.webp",
             "commits": 0,
             "language": {
                 "name": "TypeScript",
@@ -83,7 +83,7 @@
             "href": "#",
             "date": "2025",
             "description": "Closed-source kurumsal web geliştirme projesi. Laravel 12, MySQL ve JavaScript kullanılarak dinamik içerik yönetimi sağlanan bir web sitesi geliştirilmiştir. Admin panel üzerinden içerik ve veri yönetimi, responsive UI ve SEO optimizasyonu uygulanmıştır.",
-            "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa",
+            "image": "/assets/images/repo-placeholder.webp",
             "commits": 0,
             "language": {
                 "name": "Laravel",
