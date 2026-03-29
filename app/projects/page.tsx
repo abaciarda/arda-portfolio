@@ -4,6 +4,18 @@ import { SiGithub } from "react-icons/si";
 import projectItems from "../data/project-items.json";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projeler",
+  description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar ve freelance işlerim.",
+  openGraph: {
+    title: "Arda Abacı | Projeler",
+    description: "Geliştirdiğim açık kaynak ve kişisel web projeleri, full-stack uygulamalar.",
+    url: "https://ardaabaci.com/projects",
+    images: [{ url: "/assets/images/avatar.jpeg" }],
+  },
+};
 
 export default function ProjectsPage() {
     return (

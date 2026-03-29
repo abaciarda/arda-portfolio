@@ -5,6 +5,18 @@ import projectItems from "../data/project-items.json";
 import Link from "next/link";
 import { FaCss3, FaGithub, FaInstagram, FaJs, FaLinkedin, FaNodeJs, FaPhp, FaReact } from "react-icons/fa";
 import { SiGit, SiLaravel, SiMongodb, SiMysql, SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Hakkımda",
+  description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum. Eğitim geçmişim ve odak alanlarımı keşfedin.",
+  openGraph: {
+    title: "Arda Abacı | Hakkımda",
+    description: "Ben Arda Abacı, İstanbul Arel Üniversitesi öğrencisiyim ve Jr. Full-Stack Web Developer olarak çalışıyorum.",
+    url: "https://ardaabaci.com/about",
+    images: [{ url: "/assets/images/avatar.jpeg" }],
+  },
+};
 
 export default function ProjectsPage() {
     return (

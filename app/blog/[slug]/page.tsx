@@ -6,6 +6,7 @@ import CodeBlock from "../components/CodeBlock";
 import Badge from "../components/Badge";
 import InfoBox from "../components/InfoBox";
 import ComparisonTable from "../components/ComparisonTable";
+import { Metadata } from "next";
 
 interface BlogSection {
     id: string;
@@ -36,6 +37,36 @@ const SECTIONS = [
     { id: "migration", title: "Geçiş Süreci" },
     { id: "sonuc", title: "Sonuç" },
 ];
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params;
+    return {
+        title: POST.title,
+        description: POST.subtitle,
+        openGraph: {
+            title: POST.title,
+            description: POST.subtitle,
+            type: "article",
+            publishedTime: new Date().toISOString(), // Update this to use actual date when using real data
+            authors: [POST.author],
+            url: `https://ardaabaci.com/blog/${slug}`,
+            images: [
+                {
+                    url: "/assets/images/blog/tailwind-article.webp", // Mock image representation
+                    width: 1200,
+                    height: 630,
+                    alt: POST.title,
+                }
+            ]
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: POST.title,
+            description: POST.subtitle,
+            images: ["/assets/images/blog/tailwind-article.webp"],
+        }
+    };
+}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }>; }) {
     const { slug } = await params;

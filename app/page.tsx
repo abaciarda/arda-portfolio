@@ -1,6 +1,18 @@
 import Link from "next/link";
 import { FaCss3, FaGithub, FaJava, FaJs, FaLinkedin, FaNodeJs, FaPhp, FaReact } from "react-icons/fa";
 import { SiGit, SiLaravel, SiMongodb, SiMysql, SiNextdotjs, SiPhp, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ana Sayfa",
+  description: "Arda Abacı, Jr. Full-Stack Developer. Modern web teknolojileri, React, Next.js ve Node.js ile geliştirilmiş full-stack projelerimi inceleyin.",
+  openGraph: {
+    title: "Arda Abacı | Ana Sayfa",
+    description: "Arda Abacı, Jr. Full-Stack Developer. Modern web teknolojileri ile geliştirilmiş full-stack projelerimi inceleyin.",
+    url: "https://ardaabaci.com",
+    images: [{ url: "/assets/images/avatar.jpeg" }],
+  },
+};
 
 export default function Home() {
   return (

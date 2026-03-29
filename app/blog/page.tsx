@@ -1,4 +1,16 @@
 import BlogCard from "../components/BlogCard";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Web geliştirme, React, Next.js, veritabanı yönetimleri ve yazılım teknolojileri üzerine deneyimlerimi paylaştığım teknik blogum.",
+  openGraph: {
+    title: "Arda Abacı | Blog",
+    description: "Web geliştirme üzerine deneyimlerimi paylaştığım teknik blogum.",
+    url: "https://ardaabaci.com/blog",
+    images: [{ url: "/assets/images/avatar.jpeg" }],
+  },
+};
 
 const SAMPLE_POSTS = [
   {
