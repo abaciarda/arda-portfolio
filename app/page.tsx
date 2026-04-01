@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { FaCss3, FaGithub, FaJava, FaJs, FaLinkedin, FaNodeJs, FaPhp, FaReact } from "react-icons/fa";
-import { SiGit, SiLaravel, SiMongodb, SiMysql, SiNextdotjs, SiPhp, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { SiGit, SiLaravel, SiMongodb, SiMysql, SiNextdotjs, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { Metadata } from "next";
+import { getLatestCommits } from "./actions/commits";
 
 export const metadata: Metadata = {
   title: "Ana Sayfa",
@@ -14,7 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default async function Home() {
+  const latestCommits = await getLatestCommits();
   return (
     <div className="flex flex-col">
       <header className="h-120 relative flex items-center justify-center">
@@ -188,22 +190,16 @@ export default function Home() {
           <div className="flex flex-col gap-3">
             <p className="text-2xl font-semibold">Son Etkinliklerim</p>
 
-            <div className="flex items-center gap-1 font-light text-foreground/50">
-              <p>28 Mar -</p>
-              <p>✨ Auth has been implemented</p>
-              <Link href="https://github.com/abaciarda/nextjs-blog-project" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                abaciarda/nextjs-blog-project
-              </Link>
-            </div>
-            <div className="flex items-center gap-1 font-light text-foreground/50">
-              <p>28 Mar -</p>
-              <p>✨ Auth has been implemented</p>
-              <Link href="https://github.com/abaciarda/nextjs-blog-project" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                abaciarda/nextjs-blog-project
-              </Link>
-            </div>
+            {latestCommits.map((commit) => (
+              <div key={ commit.sha } className="flex items-center gap-1 font-light text-foreground/50">
+                <p>{ commit.date } -</p>
+                <p>{ commit.message }</p>
+                <Link href={ commit.url } target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                  { commit.repo }
+                </Link>
+              </div>
+            ))}
           </div>
-
         </div>
       </section>
     </div>
