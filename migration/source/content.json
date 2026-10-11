@@ -1,0 +1,864 @@
+{
+  "posts": [
+    {
+      "_type": "post",
+      "title": "Tailwind CSS v4: PostCSS'e Veda, Hıza Merhaba",
+      "slug": {
+        "_type": "slug",
+        "current": "tailwind-css-v4-inceleme"
+      },
+      "excerpt": "Konfigürasyon dosyasından CSS-first yaklaşımına, Oxide engine'den yeni @theme direktifine kadar v4'ün her köşesini inceledim. Gerçekten bu kadar hızlı mı?",
+      "publishedAt": "2026-03-28T09:00:00+03:00",
+      "category": "Tasarım",
+      "tags": [
+        "tailwindcss",
+        "css",
+        "frontend",
+        "performans"
+      ],
+      "coverPath": "/assets/images/blog/tailwind-article.webp",
+      "body": [
+        {
+          "_type": "block",
+          "_key": "giris",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-1",
+              "text": "Neden v4?",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-2",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-3",
+              "text": "Tailwind CSS, 2019'dan bu yana utility-first CSS'in en popüler temsilcisi oldu. Ama v3 ile birlikte gelen JIT motoru, ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-4",
+              "text": "tailwind.config.js",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-5",
+              "text": " ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-6",
+              "text": "dosyasının giderek karmaşıklaşması ve PostCSS bağımlılığı — tüm bunlar, ekibin sıfırdan bir şeyler inşa etmesi için yeterli nedendi.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-7",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-8",
+              "text": "v4'ün temel hedefi şu: ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-9",
+              "text": "daha hızlı, daha az konfigürasyon, daha çok CSS standartları",
+              "marks": [
+                "em"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-10",
+              "text": ". Ve spoiler — büyük ölçüde başarıyorlar.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "oxide-engine",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-11",
+              "text": "Oxide Engine",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-12",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-13",
+              "text": "v4'ün kalbinde ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-14",
+              "text": "Oxide",
+              "marks": [
+                "strong"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-15",
+              "text": " adı verilen, Rust ile yazılmış yeni bir build engine var. Bu geçiş, derleme sürelerinde dramatik bir iyileşme sağlıyor:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "benchmark",
+          "_key": "source-16",
+          "items": [
+            {
+              "_key": "source-17",
+              "label": "İlk Derleme",
+              "before": "~1.500ms",
+              "after": "~35ms",
+              "improvement": "43× daha hızlı"
+            },
+            {
+              "_key": "source-18",
+              "label": "Artımlı",
+              "before": "~150ms",
+              "after": "~4ms",
+              "improvement": "37× daha hızlı"
+            }
+          ]
+        },
+        {
+          "_type": "notice",
+          "_key": "source-19",
+          "type": "info",
+          "title": "Nasıl ölçüldü?",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-20",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-21",
+                  "text": "Bu rakamlar Tailwind'in kendi benchmark testlerinden alınmıştır. Gerçek proje boyutuna göre oranlar değişebilir, ancak genel eğilim tutarlıdır.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "css-first",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-22",
+              "text": "CSS-First Yaklaşım",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-23",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-24",
+              "text": "v3'te tüm konfigürasyon JavaScript'te yapılırdı. v4 bu düzeni tersine çeviriyor: artık konfigürasyon doğrudan CSS dosyasında, ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-25",
+              "text": "@import \"tailwindcss\"",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-26",
+              "text": " ile başlıyor.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-27",
+          "language": "css — v3 (eski)",
+          "code": "/* postcss.config.js */\nmodule.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n}\n\n/* tailwind.config.js */\nmodule.exports = {\n  content: ['./src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {\n      colors: { brand: '#0ea5e9' }\n    }\n  }\n}"
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-28",
+          "language": "css — v4 (yeni)",
+          "code": "/* globals.css — tek dosya, hepsi burada */\n@import \"tailwindcss\";\n\n@theme {\n  --color-brand: #0ea5e9;\n  --font-display: 'Geist', sans-serif;\n  --radius-card: 0.75rem;\n}"
+        },
+        {
+          "_type": "block",
+          "_key": "source-29",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-30",
+              "text": "PostCSS konfigürasyonu artık gerekli değil. Vite kullanıyorsanız",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-31",
+              "text": " ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-32",
+              "text": "@tailwindcss/vite",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-33",
+              "text": " plugin'i yeterli.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "theme-direktifi",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-34",
+              "text": "@theme Direktifi",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-35",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-36",
+              "text": "@theme",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-37",
+              "text": " bloğunda tanımladığınız her değişken, otomatik olarak hem CSS custom property hem de Tailwind utility class olarak kullanılabilir hale geliyor.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-38",
+          "language": "css",
+          "code": "@theme {\n  /* Bu tanım şunları üretir:\n     - CSS var: --color-electric\n     - Utility: bg-electric, text-electric, border-electric\n  */\n  --color-electric: oklch(65% 0.25 250);\n\n  /* Spacing */\n  --spacing-18: 4.5rem; /* → p-18, m-18, gap-18 */\n\n  /* Animasyonlar */\n  --animate-slide-in: slide-in 0.3s ease-out;\n}"
+        },
+        {
+          "_type": "notice",
+          "_key": "source-39",
+          "type": "tip",
+          "title": "OKLCH renk uzayı",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-40",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-41",
+                  "text": "v4, renk tanımlarında OKLCH kullanımını teşvik ediyor. P3 geniş renk gamutunu destekleyen modern tarayıcılarda çok daha canlı renkler elde ediyorsunuz.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "yeni-ozellikler",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-42",
+              "text": "Yeni Özellikler",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-43",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-44",
+              "text": "v4 salt bir refactor değil — yeni utility'ler ve variant'larla geliyor:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "featureList",
+          "_key": "source-45",
+          "items": [
+            {
+              "_key": "source-46",
+              "title": "field-sizing-content",
+              "description": "Textarea'ların içeriğe göre otomatik büyümesi artık tek class ile mümkün.",
+              "badge": "Yeni utility",
+              "color": "green"
+            },
+            {
+              "_key": "source-47",
+              "title": "@starting-style desteği",
+              "description": "display: none'dan animate etmek artık pure CSS ile mümkün. JS opacity trick'lerine elveda.",
+              "badge": "Yeni variant",
+              "color": "blue"
+            },
+            {
+              "_key": "source-48",
+              "title": "not-* variant",
+              "description": "not-hover:opacity-50 gibi negasyon variant'ları artık built-in olarak geliyor.",
+              "badge": "Yeni variant",
+              "color": "blue"
+            },
+            {
+              "_key": "source-49",
+              "title": "inert variant",
+              "description": "inert attribute'una sahip elementler için özel stil tanımlayabilirsiniz.",
+              "badge": "Yeni variant",
+              "color": "orange"
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "migration",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-50",
+              "text": "Geçiş Süreci",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-51",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-52",
+              "text": "v3'ten v4'e geçiş için resmi migration tool mevcut. Çoğu breaking change otomatik çözülüyor:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-53",
+          "language": "bash",
+          "code": "# Otomatik migration\nnpx @tailwindcss/upgrade@next\n\n# Manuel kurulum (yeni proje)\nnpm install tailwindcss@next @tailwindcss/vite"
+        },
+        {
+          "_type": "block",
+          "_key": "source-54",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-55",
+              "text": "v3 ile v4 arasındaki temel farkların özeti:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "comparisonTable",
+          "_key": "source-56",
+          "columns": [
+            "Özellik",
+            "v3",
+            "v4"
+          ],
+          "rows": [
+            {
+              "_key": "source-57",
+              "cells": [
+                "Konfigürasyon",
+                "tailwind.config.js",
+                "CSS @theme direktifi"
+              ]
+            },
+            {
+              "_key": "source-58",
+              "cells": [
+                "Build aracı",
+                "PostCSS zorunlu",
+                "Vite plugin / CLI"
+              ]
+            },
+            {
+              "_key": "source-59",
+              "cells": [
+                "İlk derleme",
+                "~1.5s",
+                "~35ms"
+              ]
+            },
+            {
+              "_key": "source-60",
+              "cells": [
+                "Artımlı derleme",
+                "~150ms",
+                "~4ms"
+              ]
+            },
+            {
+              "_key": "source-61",
+              "cells": [
+                "CSS değişkenleri",
+                "Manuel",
+                "Otomatik üretim"
+              ]
+            },
+            {
+              "_key": "source-62",
+              "cells": [
+                "dark: variant",
+                "class / media",
+                "+ @custom-variant"
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "notice",
+          "_key": "source-63",
+          "type": "warning",
+          "title": "Breaking changes var",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-64",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-65",
+                  "text": "bg-opacity-*",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-66",
+                  "text": ",",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-67",
+                  "text": " ",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-68",
+                  "text": "text-opacity-*",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-69",
+                  "text": " gibi utility'ler kaldırıldı. Bunların yerine artık ",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-70",
+                  "text": "bg-black/50",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-71",
+                  "text": " sözdizimi kullanılıyor. Migration tool büyük çoğunluğunu otomatik dönüştürüyor.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "sonuc",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-72",
+              "text": "Sonuç",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-73",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-74",
+              "text": "Tailwind CSS v4, hem bir teknik yeniden yazım hem de felsefi bir kırılma noktası. CSS-first yaklaşım, modern web standartlarına (cascade layers, custom properties, OKLCH) daha sıkı yaslanmak anlamına geliyor — bu iyi bir şey.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-75",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-76",
+              "text": "Build hızı farkı günlük geliştirme deneyiminde gözle görülür biçimde hissediliyor. Özellikle büyük projelerde hot-reload gecikmelerinin neredeyse sıfırlanması, akışı dramatik ölçüde iyileştiriyor.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-77",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-78",
+              "text": "Yeni bir projeye başlıyorsanız: doğrudan v4 kullanın. Mevcut bir projeniz varsa: migration tool'u deneyin, büyük ihtimalle sorunsuz geçeceksiniz.",
+              "marks": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Arda Portfolio",
+      "href": "https://github.com/abaciarda/arda-portfolio",
+      "date": "28.03.26",
+      "description": "Kişisel portfolyo sitesi. Modern frontend teknolojileri ile geliştirildi.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/arda-portfolio",
+      "commits": 2,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Fon Radar – Web App",
+      "href": "https://github.com/abaciarda/Fon-Radar-Web-App",
+      "date": "28.03.26",
+      "description": "Fon Radar, finansal veri ve fon analizlerini görselleştiren web uygulamasıdır.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/Fon-Radar-Web-App",
+      "commits": 12,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Modamix Armatür – Freelance Project (Closed Source)",
+      "href": "https://modamix.com.tr",
+      "date": "2024",
+      "description": "Closed-source e-ticaret ve kurumsal web platformu. Laravel tabanlı sistem ile ürün yönetimi, kategori yapısı ve CRUD işlemleri geliştirilmiştir. Mobil uyumlu arayüz, SEO optimizasyonu ve performans odaklı yapı ile müşteri dönüşüm oranlarının artırılması hedeflenmiştir. www.modamix.com.tr projesi için geliştirilmiştir.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "Laravel",
+        "color": "bg-red-500"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "Java Banking System",
+      "href": "https://github.com/abaciarda/java-banking-system",
+      "date": "22.10.25",
+      "description": "OOP prensipleri kullanılarak geliştirilmiş konsol tabanlı bir bankacılık simülasyonudur.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/java-banking-system",
+      "commits": 33,
+      "language": {
+        "name": "Java",
+        "color": "bg-orange-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Atlasia Blog – Web App (Closed Source)",
+      "href": "#",
+      "date": "2026",
+      "description": "Next.js 16, TypeScript ve Tailwind CSS 4 kullanılarak geliştirilen modern ve performans odaklı blog platformu. MongoDB ve Mongoose ile veritabanı yönetimi, Better Auth ile güvenli kimlik doğrulama, Cloudinary görsel entegrasyonu ve detaylı bir admin paneline sahiptir. Responsive arayüz ve SEO optimizasyonu ön planda tutulmuştur.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "VerseCMS – Freelance Web App (Closed Source)",
+      "href": "#",
+      "date": "2025",
+      "description": "Closed-source CMS projesi. Next.js 15, TypeScript ve Tailwind CSS/SCSS ile geliştirilmiş modern içerik yönetim sistemi. MySQL ve Redis ile performans ve caching yapısı kurulmuş, Next-Auth v4 ile güvenli kimlik doğrulama sağlanmıştır. Kullanıcı yönetimi, içerik sistemi, sosyal modüller, rozet yapıları, haber sistemi, çoklu dil desteği ve admin paneli içeren modüler bir mimariye sahiptir.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "Ayşenur Uzun – Freelance Website (Closed Source)",
+      "href": "#",
+      "date": "2025",
+      "description": "Closed-source kurumsal web geliştirme projesi. Laravel 12, MySQL ve JavaScript kullanılarak dinamik içerik yönetimi sağlanan bir web sitesi geliştirilmiştir. Admin panel üzerinden içerik ve veri yönetimi, responsive UI ve SEO optimizasyonu uygulanmıştır.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "Laravel",
+        "color": "bg-red-500"
+      },
+      "icon": "laravel"
+    }
+  ],
+  "profile": {
+    "_type": "profile",
+    "name": "Arda Abacı",
+    "greeting": "Merhaba, Ben Arda 👋",
+    "role": "Jr. Full-Stack Web Developer",
+    "summary": "Merhaba, ben Arda Abacı. 19 yaşındayım ve Junior Full-Stack Developer olarak web geliştirme alanında çalışıyorum. Frontend tarafında HTML, CSS, TailwindCSS ve React/Next.js ile modern, responsive ve kullanıcı odaklı arayüzler geliştiriyorum. Backend tarafında Node.js ile temel API geliştirme ve veritabanı entegrasyonu üzerine çalışıyor, full-stack mimarileri anlamaya ve uygulamaya odaklanıyorum.",
+    "introduction": "Modern web teknolojileri kullanarak ölçeklenebilir frontend arayüzler ve backend servisler geliştiren bir Jr. Full-Stack Developer’ım.",
+    "biography": [
+      {
+        "_type": "block",
+        "_key": "source-79",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-80",
+            "text": "Merhaba, ben Arda Abacı. 19 yaşındayım ve Jr. Full-Stack Developer olarak web geliştirme alanında çalışıyorum. Yazılıma olan ilgim küçük yaşlarda, oynadığım oyunlardaki sistemlerin nasıl çalıştığını merak etmemle başladı ve zamanla üretme isteğine dönüştü.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-81",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-82",
+            "text": "Ortaokul döneminde WordPress ve hosting tabanlı basit web siteleri kurarak web dünyasına ilk adımlarımı attım. Bu süreç bana web’in sadece tüketilen değil, aynı zamanda üretilebilen bir alan olduğunu gösterdi ve yazılım serüvenimin başlangıcını oluşturdu...",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "education": [
+      {
+        "_type": "block",
+        "_key": "source-83",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-84",
+            "text": "Şu anda İstanbul Arel Üniversitesi Bilgisayar Mühendisliği 2. sınıf öğrencisiyim. Algoritma, veri yapıları ve yazılım mühendisliği temelleri üzerine çalışıyor, öğrendiklerimi pratik projelerle pekiştiriyorum.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-85",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-86",
+            "text": "Lise eğitimimi Nezihe Hasan Kılıç Anadolu Lisesi’nde tamamladım ve yazılımla ilk ciddi tanışmam bu dönemde başladı.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "_type": "block",
+        "_key": "source-87",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-88",
+            "text": "Frontend tarafında React ve Next.js ile modern, performanslı ve kullanıcı odaklı arayüzler geliştiriyorum. Component tabanlı mimari, yeniden kullanılabilir yapı ve UI performansı üzerine odaklanıyorum.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-89",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-90",
+            "text": "Backend tarafında Node.js ile REST API geliştirme, veri modelleme ve sistem tasarımı üzerine çalışıyorum. Daha önce PHP ve Laravel ile MVC mimarisi, routing ve authentication gibi backend yapılarını deneyimledim.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "CSS",
+      "Node.js",
+      "PHP",
+      "Laravel",
+      "MongoDB",
+      "MySQL",
+      "Git"
+    ],
+    "github": "https://github.com/abaciarda",
+    "linkedin": "https://www.linkedin.com/in/arda-abacı-631302320/",
+    "instagram": "https://www.instagram.com/ardaabacii_/"
+  },
+  "settings": {
+    "_type": "siteSettings",
+    "siteTitle": "Arda Abacı | Jr. Full-Stack Developer",
+    "description": "Modern web teknolojileri ile geliştirilmiş kişisel portfolyo ve blog sitesi. React, Next.js ve Node.js projelerimi inceleyin.",
+    "navigation": [
+      {
+        "_key": "source-91",
+        "label": "Anasayfa",
+        "href": "/"
+      },
+      {
+        "_key": "source-92",
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "_key": "source-93",
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "_key": "source-94",
+        "label": "About Me",
+        "href": "/about"
+      }
+    ],
+    "projectsTitle": "Katkıda Bulunduğum Projeler",
+    "projectsIntroduction": "Açık kaynak projelerde ve bireysel çalışmalarda full-stack geliştirme, backend API tasarımı, frontend arayüz geliştirme ve component mimarisi üzerine yaptığım katkıları içerir.",
+    "blogTitle": "Son Blog Yazılarım",
+    "blogIntroduction": "Deneyimlerimi, teknik notlarımı ve web geliştirme dünyasından paylaştığım yazıları burada bulabilirsiniz."
+  }
+}
