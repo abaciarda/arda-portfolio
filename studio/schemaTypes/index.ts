@@ -12,6 +12,27 @@ import {
   ThListIcon,
 } from "@sanity/icons";
 
+const localeField = defineField({
+  name: "locale",
+  title: "Content language",
+  type: "string",
+  options: {
+    list: [
+      { title: "English", value: "en" },
+      { title: "Türkçe", value: "tr" },
+    ],
+    layout: "radio",
+  },
+  initialValue: "en",
+  validation: (rule) =>
+    rule
+      .required()
+      .custom(
+        (value) =>
+          value === "en" || value === "tr" || "Choose English or Turkish.",
+      ),
+});
+
 const requiredString = (name: string, title?: string) =>
   defineField({
     name,
@@ -280,15 +301,28 @@ const post = defineType({
   type: "document",
   icon: DocumentTextIcon,
   initialValue: () => ({
+    locale: "en",
     publishedAt: new Date().toISOString(),
-    author: { _type: "reference", _ref: "profile" },
+    author: { _type: "reference", _ref: "profile-en" },
   }),
   fields: [
+    localeField,
     requiredString("title"),
     defineField({
       name: "slug",
       type: "slug",
-      options: { source: "title" },
+      options: {
+        source: "title",
+        isUnique: async (slug, context) => {
+          const id = context.document?._id.replace(/^drafts\./, "");
+          return context
+            .getClient({ apiVersion: "2026-02-01" })
+            .fetch(
+              '!defined(*[_type == "post" && coalesce(locale, "tr") == $locale && slug.current == $slug && !(_id in [$id, "drafts." + $id])][0]._id)',
+              { slug, locale: context.document?.locale || "en", id },
+            );
+        },
+      },
       validation: (rule) => rule.required(),
     }),
     defineField({
@@ -340,6 +374,7 @@ const project = defineType({
   type: "document",
   icon: ProjectsIcon,
   fields: [
+    localeField,
     requiredString("title"),
     defineField({
       name: "href",
@@ -406,6 +441,7 @@ const profile = defineType({
   type: "document",
   icon: UserIcon,
   fields: [
+    localeField,
     requiredString("name"),
     requiredString("greeting"),
     requiredString("role"),
@@ -452,6 +488,7 @@ const siteSettings = defineType({
   type: "document",
   icon: CogIcon,
   fields: [
+    localeField,
     requiredString("siteTitle"),
     defineField({
       name: "description",

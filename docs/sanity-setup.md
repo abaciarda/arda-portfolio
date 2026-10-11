@@ -59,6 +59,18 @@ In Sanity Manage, create a webhook:
 
 The endpoint verifies Sanity's signature against the raw request body and expires tagged content. Published content is fetched from Sanity's API to avoid a stale CDN response after a webhook. Scheduled future publication dates are filtered out until their time arrives; they appear on the next cache refresh rather than through an automatic Sanity publishing schedule.
 
+## English and Turkish
+
+English is the default language and uses unprefixed paths: `/`, `/about`, `/projects`, and `/blog`. Turkish uses `/tr`, `/tr/about`, `/tr/projects`, and `/tr/blog`. Old `/en` URLs redirect permanently to the unprefixed English equivalent. Internally, Next.js rewrites English requests to the shared locale routes while keeping `/en` out of the browser URL. Visitors choose Turkish through the navigation switcher; the current language is preserved in internal links. Browser language preferences do not override the English default.
+
+Posts and projects use Sanity's document internationalization plugin with a `locale` field, separate documents per language, and translation metadata linking them. The existing project `language` field still describes the programming language. Profile and Site settings each have English and Turkish entries in Studio. Existing Turkish singleton IDs stay unchanged to preserve author references; English uses `profile-en` and `siteSettings-en`.
+
+In Studio, use the translation menu on a post or project to open or create its other language. New documents have English as the default; language-specific templates also allow creating Turkish content. Translate text inside custom blocks as well as titles and descriptions. Each language is published separately. Keep a shared slug if desired; the website also handles different slugs by following translation references when switching languages. If the other version is missing or unpublished, switching from an article opens that language's blog listing.
+
+UI labels are in `app/i18n/config.ts`. Dates, document language, canonical URLs, language alternates, and Open Graph locale follow the selected language. Untranslated posts do not appear under the other language. Existing documents without a `locale` are treated as Turkish during migration.
+
+`npm run content:localize` prepares a read-only plan for the existing content. After reviewing the English snapshot and the local `migration/reports/localization-plan.json`, run `npm run content:localize -- --apply` to mark existing content as Turkish, add missing English documents, and link translations. The script snapshots current content, checks for changes to its source article/projects, preserves current drafts, and never replaces existing English content. Deploy the updated Studio/schema before applying the import. Then deploy the website separately to Cloudflare.
+
 ## Content model
 
 - Posts: metadata, author reference, cover image, category/tags, SEO fields, and Portable Text body.

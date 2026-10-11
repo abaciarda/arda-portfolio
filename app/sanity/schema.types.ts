@@ -138,6 +138,7 @@ export type SiteSettings = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  locale?: "en" | "tr";
   siteTitle?: string;
   description?: string;
   navigation?: Array<{
@@ -151,12 +152,49 @@ export type SiteSettings = {
   blogIntroduction?: string;
 };
 
+export type TranslationMetadata = {
+  _id: string;
+  _type: "translation.metadata";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  translations?: InternationalizedArrayReference;
+  schemaTypes?: Array<string>;
+};
+
+export type InternationalizedArrayReference = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayReferenceValue
+>;
+
+export type PostReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "post";
+};
+
+export type ProjectReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "project";
+};
+
+export type InternationalizedArrayReferenceValue = {
+  _type: "internationalizedArrayReferenceValue";
+  value?: PostReference | ProjectReference;
+  language?: string;
+};
+
 export type Project = {
   _id: string;
   _type: "project";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  locale?: "en" | "tr";
   title?: string;
   href?: string;
   date?: string;
@@ -205,6 +243,7 @@ export type Post = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  locale?: "en" | "tr";
   title?: string;
   slug?: Slug;
   excerpt?: string;
@@ -231,6 +270,7 @@ export type Profile = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  locale?: "en" | "tr";
   name?: string;
   greeting?: string;
   role?: string;
@@ -418,6 +458,11 @@ export type AllSanitySchemaTypes =
   | CodeBlock
   | RichText
   | SiteSettings
+  | TranslationMetadata
+  | InternationalizedArrayReference
+  | PostReference
+  | ProjectReference
+  | InternationalizedArrayReferenceValue
   | Project
   | SanityImageCrop
   | SanityImageHotspot

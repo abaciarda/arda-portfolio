@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navigation from "./components/Navigation";
+import "../globals.css";
+import Navigation from "../components/Navigation";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { getProfile, getSettings } from "./sanity/content";
+import { getProfile, getSettings } from "../sanity/content";
+import { getLocale, type LocaleProps } from "../i18n/server";
+import { languageAlternates, locales, localizedPath } from "../i18n/config";
+import { LanguageLinksProvider } from "../components/LanguageLinks";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,16 +81,31 @@ const defaultMetadata: Metadata = {
   },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const [settings, profile] = await Promise.all([getSettings(), getProfile()]);
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: LocaleProps): Promise<Metadata> {
+  const locale = await getLocale(params);
+  const [settings, profile] = await Promise.all([
+    getSettings(locale),
+    getProfile(locale),
+  ]);
   return {
     ...defaultMetadata,
     title: { default: settings.siteTitle, template: `%s | ${profile.name}` },
     description: settings.description,
+    alternates: languageAlternates(localizedPath(locale)),
     authors: [{ name: profile.name, url: "https://ardaabaci.com" }],
     creator: profile.name,
     openGraph: {
       ...defaultMetadata.openGraph,
+      locale: locale === "en" ? "en_US" : "tr_TR",
+      alternateLocale: locale === "en" ? ["tr_TR"] : ["en_US"],
+      url: `https://ardaabaci.com${localizedPath(locale)}`,
+      siteName: settings.siteTitle,
       title: settings.siteTitle,
       description: settings.description,
       images: [{ url: profile.avatar, alt: profile.name }],
@@ -103,20 +121,25 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  const settings = await getSettings();
+}> &
+  LocaleProps) {
+  const locale = await getLocale(params);
+  const settings = await getSettings(locale);
   return (
     <html
-      lang="tr"
+      lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Navigation items={settings.navigation} />
-        {children}
+        <LanguageLinksProvider>
+          <Navigation items={settings.navigation} locale={locale} />
+          {children}
+        </LanguageLinksProvider>
+        <GoogleAnalytics gaId="G-PC1M1B3MJM" />
       </body>
-      <GoogleAnalytics gaId="G-PC1M1B3MJM" />
     </html>
   );
 }

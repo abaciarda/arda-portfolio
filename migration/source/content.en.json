@@ -1,0 +1,864 @@
+{
+  "profile": {
+    "_type": "profile",
+    "name": "Arda Abacı",
+    "greeting": "Hi, I’m Arda 👋",
+    "role": "Jr. Full-Stack Web Developer",
+    "summary": "Hi, I’m Arda Abacı, a 19-year-old Junior Full-Stack Developer. I build modern, responsive interfaces with HTML, CSS, Tailwind CSS, and React/Next.js. On the backend, I work with Node.js APIs and database integrations while developing my understanding of full-stack architecture.",
+    "introduction": "I’m a Junior Full-Stack Developer building scalable frontend interfaces and backend services with modern web technologies.",
+    "biography": [
+      {
+        "_type": "block",
+        "_key": "source-79",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-79-text",
+            "text": "Hi, I’m Arda Abacı. I’m 19 years old and work as a Junior Full-Stack Developer. My interest in software began when I was young, wondering how the systems in the games I played worked. That curiosity gradually turned into a desire to build things.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-81",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-81-text",
+            "text": "I took my first steps into web development in middle school, creating simple websites with WordPress and web hosting. That experience showed me that the web was a place where I could create things, and it marked the beginning of my software journey.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "education": [
+      {
+        "_type": "block",
+        "_key": "source-83",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-83-text",
+            "text": "I’m currently a second-year Computer Engineering student at Istanbul Arel University. I study algorithms, data structures, and the fundamentals of software engineering, applying what I learn through practical projects.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-85",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-85-text",
+            "text": "I completed high school at Nezihe Hasan Kılıç Anadolu High School, where I first began exploring software development seriously.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "_type": "block",
+        "_key": "source-87",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-87-text",
+            "text": "On the frontend, I build modern, responsive interfaces with React and Next.js. I focus on component architecture, reusable structures, and interface performance.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "source-89",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "source-89-text",
+            "text": "On the backend, I work with Node.js REST APIs, data modeling, and system design. I also have experience with PHP and Laravel, including MVC architecture, routing, and authentication.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "skills": [
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind",
+      "CSS",
+      "Node.js",
+      "PHP",
+      "Laravel",
+      "MongoDB",
+      "MySQL",
+      "Git"
+    ],
+    "github": "https://github.com/abaciarda",
+    "linkedin": "https://www.linkedin.com/in/arda-abacı-631302320/",
+    "instagram": "https://www.instagram.com/ardaabacii_/"
+  },
+  "settings": {
+    "_type": "siteSettings",
+    "siteTitle": "Arda Abacı | Jr. Full-Stack Developer",
+    "description": "A personal portfolio and technical blog built with modern web technologies. Explore my React, Next.js, and Node.js projects.",
+    "navigation": [
+      {
+        "_key": "source-91",
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "_key": "source-92",
+        "label": "Projects",
+        "href": "/projects"
+      },
+      {
+        "_key": "source-93",
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "_key": "source-94",
+        "label": "About Me",
+        "href": "/about"
+      }
+    ],
+    "projectsTitle": "Projects I’ve Contributed To",
+    "projectsIntroduction": "My contributions to open-source projects and personal work across full-stack development, backend API design, frontend interfaces, and component architecture.",
+    "blogTitle": "Latest Blog Posts",
+    "blogIntroduction": "Explore my experiences, technical notes, and articles about web development."
+  },
+  "projects": [
+    {
+      "title": "Arda Portfolio",
+      "href": "https://github.com/abaciarda/arda-portfolio",
+      "date": "28.03.26",
+      "description": "A personal portfolio website built with modern frontend technologies.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/arda-portfolio",
+      "commits": 2,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Fon Radar – Web App",
+      "href": "https://github.com/abaciarda/Fon-Radar-Web-App",
+      "date": "28.03.26",
+      "description": "Fon Radar is a web application for visualizing financial data and investment fund analysis.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/Fon-Radar-Web-App",
+      "commits": 12,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Modamix Armatür – Freelance Project (Closed Source)",
+      "href": "https://modamix.com.tr",
+      "date": "2024",
+      "description": "A closed-source e-commerce and corporate website built with Laravel. The project includes product and category management, CRUD operations, a responsive interface, SEO improvements, and performance optimization for modamix.com.tr.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "Laravel",
+        "color": "bg-red-500"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "Java Banking System",
+      "href": "https://github.com/abaciarda/java-banking-system",
+      "date": "22.10.25",
+      "description": "A console-based banking simulation developed using object-oriented programming principles.",
+      "image": "https://opengraph.githubassets.com/7750134180aea11cda514eac1a158c7462efaa/abaciarda/java-banking-system",
+      "commits": 33,
+      "language": {
+        "name": "Java",
+        "color": "bg-orange-400"
+      },
+      "icon": "github"
+    },
+    {
+      "title": "Atlasia Blog – Web App (Closed Source)",
+      "href": "#",
+      "date": "2026",
+      "description": "A modern blog platform built with Next.js 16, TypeScript, and Tailwind CSS 4. It includes MongoDB and Mongoose for data management, Better Auth authentication, Cloudinary images, and a comprehensive admin panel, with an emphasis on responsive design and SEO.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "VerseCMS – Freelance Web App (Closed Source)",
+      "href": "#",
+      "date": "2025",
+      "description": "A closed-source CMS built with Next.js 15, TypeScript, Tailwind CSS, and SCSS. MySQL and Redis support storage and caching, while NextAuth v4 handles authentication. Its modular architecture includes user and content management, social features, badges, news, multiple languages, and an admin panel.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "TypeScript",
+        "color": "bg-blue-400"
+      },
+      "icon": "laravel"
+    },
+    {
+      "title": "Ayşenur Uzun – Freelance Website (Closed Source)",
+      "href": "#",
+      "date": "2025",
+      "description": "A closed-source corporate website built with Laravel 12, MySQL, and JavaScript. An admin panel provides dynamic content management, alongside a responsive interface and SEO improvements.",
+      "image": "/assets/images/repo-placeholder.webp",
+      "commits": 0,
+      "language": {
+        "name": "Laravel",
+        "color": "bg-red-500"
+      },
+      "icon": "laravel"
+    }
+  ],
+  "posts": [
+    {
+      "_type": "post",
+      "title": "Tailwind CSS v4: A Faster, CSS-First Approach",
+      "slug": {
+        "_type": "slug",
+        "current": "tailwind-css-v4-inceleme"
+      },
+      "excerpt": "A closer look at CSS-first configuration, the Oxide engine, and the new @theme directive in Tailwind CSS v4.",
+      "publishedAt": "2026-03-28T09:00:00+03:00",
+      "category": "Design",
+      "tags": [
+        "tailwindcss",
+        "css",
+        "frontend",
+        "performance"
+      ],
+      "coverPath": "/assets/images/blog/tailwind-article.webp",
+      "body": [
+        {
+          "_type": "block",
+          "_key": "giris",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-1",
+              "text": "Why v4?",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-2",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-3",
+              "text": "Since 2019, Tailwind CSS has become one of the most popular utility-first CSS frameworks. But the JIT engine introduced in v3, the growing complexity of ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-4",
+              "text": "tailwind.config.js",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-5",
+              "text": " ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-6",
+              "text": ", and the PostCSS dependency gave the team plenty of reasons to build something new from the ground up.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-7",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-8",
+              "text": "The main goal of v4 is simple: ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-9",
+              "text": "more speed, less configuration, and greater use of CSS standards",
+              "marks": [
+                "em"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-10",
+              "text": ". And spoiler: it largely delivers.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "oxide-engine",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-11",
+              "text": "Oxide Engine",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-12",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-13",
+              "text": "At the heart of v4 is ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-14",
+              "text": "Oxide",
+              "marks": [
+                "strong"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-15",
+              "text": ", a new build engine written in Rust. This change brings a dramatic improvement in compilation times:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "benchmark",
+          "_key": "source-16",
+          "items": [
+            {
+              "_key": "source-17",
+              "label": "Initial build",
+              "before": "~1,500ms",
+              "after": "~35ms",
+              "improvement": "43× faster"
+            },
+            {
+              "_key": "source-18",
+              "label": "Incremental build",
+              "before": "~150ms",
+              "after": "~4ms",
+              "improvement": "37× faster"
+            }
+          ]
+        },
+        {
+          "_type": "notice",
+          "_key": "source-19",
+          "type": "info",
+          "title": "How was this measured?",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-20",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-21",
+                  "text": "These figures come from Tailwind’s own benchmark tests. The ratios can vary with the size of a real project, but the overall trend is consistent.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "css-first",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-22",
+              "text": "The CSS-First Approach",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-23",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-24",
+              "text": "In v3, configuration lived in JavaScript. v4 changes that approach: configuration now lives directly in your CSS file, starting with ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-25",
+              "text": "@import \"tailwindcss\"",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-26",
+              "text": ".",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-27",
+          "language": "css — v3 (old)",
+          "code": "/* postcss.config.js */\nmodule.exports = {\n  plugins: {\n    tailwindcss: {},\n    autoprefixer: {},\n  },\n}\n\n/* tailwind.config.js */\nmodule.exports = {\n  content: ['./src/**/*.{js,ts,jsx,tsx}'],\n  theme: {\n    extend: {\n      colors: { brand: '#0ea5e9' }\n    }\n  }\n}"
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-28",
+          "language": "css — v4 (new)",
+          "code": "/* globals.css — everything in one file */\n@import \"tailwindcss\";\n\n@theme {\n  --color-brand: #0ea5e9;\n  --font-display: 'Geist', sans-serif;\n  --radius-card: 0.75rem;\n}"
+        },
+        {
+          "_type": "block",
+          "_key": "source-29",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-30",
+              "text": "With Vite, you can use the ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-31",
+              "text": " ",
+              "marks": []
+            },
+            {
+              "_type": "span",
+              "_key": "source-32",
+              "text": "@tailwindcss/vite",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-33",
+              "text": " plugin instead of a PostCSS setup.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "theme-direktifi",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-34",
+              "text": "The @theme Directive",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-35",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-36",
+              "text": "@theme",
+              "marks": [
+                "code"
+              ]
+            },
+            {
+              "_type": "span",
+              "_key": "source-37",
+              "text": " makes each variable available as both a CSS custom property and a Tailwind utility class.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-38",
+          "language": "css",
+          "code": "@theme {\n  /* This definition generates:\n     - CSS var: --color-electric\n     - Utility: bg-electric, text-electric, border-electric\n  */\n  --color-electric: oklch(65% 0.25 250);\n\n  /* Spacing */\n  --spacing-18: 4.5rem; /* → p-18, m-18, gap-18 */\n\n  /* Animations */\n  --animate-slide-in: slide-in 0.3s ease-out;\n}"
+        },
+        {
+          "_type": "notice",
+          "_key": "source-39",
+          "type": "tip",
+          "title": "The OKLCH color space",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-40",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-41",
+                  "text": "v4 encourages OKLCH color definitions. Modern browsers with support for the wide P3 color gamut can display much more vivid colors.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "yeni-ozellikler",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-42",
+              "text": "New Features",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-43",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-44",
+              "text": "v4 is more than a refactor: it introduces new utilities and variants:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "featureList",
+          "_key": "source-45",
+          "items": [
+            {
+              "_key": "source-46",
+              "title": "field-sizing-content",
+              "description": "Textareas can grow to fit their content with a single utility class.",
+              "badge": "New utility",
+              "color": "green"
+            },
+            {
+              "_key": "source-47",
+              "title": "@starting-style support",
+              "description": "Animate elements appearing from display: none using native CSS.",
+              "badge": "New variant",
+              "color": "blue"
+            },
+            {
+              "_key": "source-48",
+              "title": "not-* variant",
+              "description": "Negation variants such as not-hover:opacity-50 are now built in.",
+              "badge": "New variant",
+              "color": "blue"
+            },
+            {
+              "_key": "source-49",
+              "title": "inert variant",
+              "description": "Apply styles to elements with the inert attribute.",
+              "badge": "New variant",
+              "color": "orange"
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "migration",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-50",
+              "text": "Migrating to v4",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-51",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-52",
+              "text": "An official migration tool is available for upgrading from v3 to v4. It handles most breaking changes automatically:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "codeBlock",
+          "_key": "source-53",
+          "language": "bash",
+          "code": "# Automatic migration\nnpx @tailwindcss/upgrade@next\n\n# Manual setup (new project)\nnpm install tailwindcss@next @tailwindcss/vite"
+        },
+        {
+          "_type": "block",
+          "_key": "source-54",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-55",
+              "text": "A summary of the main differences between v3 and v4:",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "comparisonTable",
+          "_key": "source-56",
+          "columns": [
+            "Feature",
+            "v3",
+            "v4"
+          ],
+          "rows": [
+            {
+              "_key": "source-57",
+              "cells": [
+                "Configuration",
+                "tailwind.config.js",
+                "CSS @theme directive"
+              ]
+            },
+            {
+              "_key": "source-58",
+              "cells": [
+                "Build tooling",
+                "PostCSS",
+                "Vite plugin / CLI / PostCSS"
+              ]
+            },
+            {
+              "_key": "source-59",
+              "cells": [
+                "Initial build",
+                "~1.5s",
+                "~35ms"
+              ]
+            },
+            {
+              "_key": "source-60",
+              "cells": [
+                "Incremental build",
+                "~150ms",
+                "~4ms"
+              ]
+            },
+            {
+              "_key": "source-61",
+              "cells": [
+                "CSS variables",
+                "Manual",
+                "Automatically generated"
+              ]
+            },
+            {
+              "_key": "source-62",
+              "cells": [
+                "dark: variant",
+                "class / media",
+                "+ @custom-variant"
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "notice",
+          "_key": "source-63",
+          "type": "warning",
+          "title": "Breaking changes",
+          "body": [
+            {
+              "_type": "block",
+              "_key": "source-64",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "source-65",
+                  "text": "bg-opacity-*",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-66",
+                  "text": ",",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-67",
+                  "text": " ",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-68",
+                  "text": "text-opacity-*",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-69",
+                  "text": " and similar utilities have been removed. Instead, use the ",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-70",
+                  "text": "bg-black/50",
+                  "marks": [
+                    "code"
+                  ]
+                },
+                {
+                  "_type": "span",
+                  "_key": "source-71",
+                  "text": " syntax. The migration tool converts most of these automatically.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "sonuc",
+          "style": "h2",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-72",
+              "text": "Conclusion",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-73",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-74",
+              "text": "Tailwind CSS v4 is both a technical rewrite and a shift in approach. CSS-first configuration relies more closely on modern web standards such as cascade layers, custom properties, and OKLCH.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-75",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-76",
+              "text": "The difference in build speed is noticeable during everyday development. On larger projects, nearly instant incremental builds make the workflow much smoother.",
+              "marks": []
+            }
+          ]
+        },
+        {
+          "_type": "block",
+          "_key": "source-77",
+          "style": "normal",
+          "markDefs": [],
+          "children": [
+            {
+              "_type": "span",
+              "_key": "source-78",
+              "text": "Starting a new project? Use v4 directly. For an existing project, try the migration tool and review any changes it makes.",
+              "marks": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

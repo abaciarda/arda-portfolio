@@ -2,15 +2,26 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { GoCommit } from "react-icons/go";
 import { SiGithub } from "react-icons/si";
-import { getProfile, getProjects, getSettings } from "../sanity/content";
-import PageHeader from "../components/PageHeader";
-import { SocialLinks } from "../components/ProfileDetails";
-import type { Project } from "../sanity/types";
+import { getProfile, getProjects, getSettings } from "../../sanity/content";
+import PageHeader from "../../components/PageHeader";
+import { SocialLinks } from "../../components/ProfileDetails";
+import type { Project } from "../../sanity/types";
+import {
+  dictionaries,
+  languageAlternates,
+  localizedPath,
+} from "../../i18n/config";
+import { getLocale, type LocaleProps } from "../../i18n/server";
 
-export const metadata: Metadata = {
-  title: "Projeler",
-  alternates: { canonical: "/projects" },
-};
+export async function generateMetadata({
+  params,
+}: LocaleProps): Promise<Metadata> {
+  const locale = await getLocale(params);
+  return {
+    title: dictionaries[locale].projects,
+    alternates: languageAlternates(localizedPath(locale, "/projects")),
+  };
+}
 
 function ProjectContent({ project }: { project: Project }) {
   return (
@@ -54,11 +65,12 @@ function ProjectContent({ project }: { project: Project }) {
   );
 }
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({ params }: LocaleProps) {
+  const locale = await getLocale(params);
   const [projects, profile, settings] = await Promise.all([
-    getProjects(),
-    getProfile(),
-    getSettings(),
+    getProjects(locale),
+    getProfile(locale),
+    getSettings(locale),
   ]);
   return (
     <main className="flex flex-col">
@@ -91,7 +103,9 @@ export default async function ProjectsPage() {
             )}
           </div>
         ) : (
-          <p className="text-foreground/50">Henüz yayınlanmış proje yok.</p>
+          <p className="text-foreground/50">
+            {dictionaries[locale].noProjects}
+          </p>
         )}
       </section>
     </main>

@@ -1,20 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getLatestCommits } from "./actions/commits";
-import { getProfile, getProjects } from "./sanity/content";
-import PageHeader from "./components/PageHeader";
-import { Skills, SocialLinks } from "./components/ProfileDetails";
+import { getLatestCommits } from "../actions/commits";
+import { getProfile, getProjects } from "../sanity/content";
+import PageHeader from "../components/PageHeader";
+import { Skills, SocialLinks } from "../components/ProfileDetails";
+import {
+  dictionaries,
+  formatDate,
+  languageAlternates,
+  localizedPath,
+} from "../i18n/config";
+import { getLocale, type LocaleProps } from "../i18n/server";
 
-export const metadata: Metadata = {
-  title: "Ana Sayfa",
-  alternates: { canonical: "/" },
-};
+export async function generateMetadata({
+  params,
+}: LocaleProps): Promise<Metadata> {
+  const locale = await getLocale(params);
+  return {
+    title: dictionaries[locale].home,
+    alternates: languageAlternates(localizedPath(locale)),
+  };
+}
 
-export default async function Home() {
+export default async function Home({ params }: LocaleProps) {
+  const locale = await getLocale(params);
+  const t = dictionaries[locale];
   const [profile, projects, commits] = await Promise.all([
-    getProfile(),
-    getProjects(),
+    getProfile(locale),
+    getProjects(locale),
     getLatestCommits(),
   ]);
   return (
@@ -39,19 +53,19 @@ export default async function Home() {
       <section className="container mx-auto grid lg:grid-cols-2 gap-10 py-12 px-4">
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold">Hakkımda</h2>
+            <h2 className="text-2xl font-semibold">{t.biography}</h2>
             <p className="text-foreground/50 font-light leading-relaxed">
               {profile.summary}
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold">Tech Stack</h2>
+            <h2 className="text-2xl font-semibold">{t.techStack}</h2>
             <Skills items={profile.skills} />
           </div>
         </div>
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold">Projelerim</h2>
+            <h2 className="text-2xl font-semibold">{t.myProjects}</h2>
             {projects
               .filter((project) => project.featured)
               .map((project) => (
@@ -67,21 +81,21 @@ export default async function Home() {
                 </div>
               ))}
             <Link
-              href="/projects"
+              href={localizedPath(locale, "/projects")}
               className="text-sm text-foreground/50 hover:text-white"
             >
-              Tüm projeler →
+              {t.allProjects} →
             </Link>
           </div>
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold">Son Etkinliklerim</h2>
+            <h2 className="text-2xl font-semibold">{t.activity}</h2>
             {commits.length ? (
               commits.map((commit) => (
                 <div
                   key={commit.sha}
                   className="flex flex-wrap items-center gap-1 font-light text-foreground/50"
                 >
-                  <span>{commit.date} –</span>
+                  <span>{formatDate(commit.date, locale, true)} –</span>
                   <span className="wrap-anywhere">
                     {commit.message.split("\n")[0]}
                   </span>
@@ -97,7 +111,7 @@ export default async function Home() {
               ))
             ) : (
               <p className="text-foreground/50 font-light">
-                Son etkinlikler şu anda gösterilemiyor.
+                {t.activityUnavailable}
               </p>
             )}
           </div>

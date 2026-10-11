@@ -4,29 +4,60 @@ import type { Metadata } from "next";
 import type { PortableTextBlock } from "@portabletext/types";
 import { toPlainText } from "@portabletext/react";
 import { notFound } from "next/navigation";
-import { formatDate, getPost } from "../../sanity/content";
-import RichText, { headingId } from "../../components/RichText";
-import TableOfContents from "../components/TableOfContents";
+import { getPost } from "../../../sanity/content";
+import RichText, { headingId } from "../../../components/RichText";
+import TableOfContents from "../../../blog/components/TableOfContents";
+import {
+  dictionaries,
+  formatDate,
+  localizedPath,
+  type Locale,
+} from "../../../i18n/config";
+import { getLocale } from "../../../i18n/server";
+import { ArticleLanguageLinks } from "../../../components/LanguageLinks";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = { params: Promise<{ slug: string; locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const locale = await getLocale(params);
+  const post = await getPost(slug, locale);
   if (!post) notFound();
   const title = post.seoTitle || post.title;
   const description = post.seoDescription || post.excerpt;
   return {
     title,
     description,
-    alternates: { canonical: `/blog/${post.slug}` },
+    alternates: {
+      canonical: localizedPath(locale, `/blog/${post.slug}`),
+      languages: {
+        ...Object.fromEntries(
+          (post.translations || [{ locale, slug: post.slug }]).map(
+            (translation) => [
+              translation.locale,
+              localizedPath(translation.locale, `/blog/${translation.slug}`),
+            ],
+          ),
+        ),
+        [locale]: localizedPath(locale, `/blog/${post.slug}`),
+        ...((post.translations || []).some((item) => item.locale === "en")
+          ? {
+              "x-default": localizedPath(
+                "en",
+                `/blog/${post.translations!.find((item) => item.locale === "en")!.slug}`,
+              ),
+            }
+          : {}),
+      },
+    },
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime: post.publishedAt,
       authors: post.author ? [post.author.name] : [],
-      url: `https://ardaabaci.com/blog/${post.slug}`,
+      url: `https://ardaabaci.com${localizedPath(locale, `/blog/${post.slug}`)}`,
+      locale: locale === "en" ? "en_US" : "tr_TR",
       images: [{ url: post.coverImage, alt: post.coverAlt || post.title }],
     },
     twitter: {
@@ -40,7 +71,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = await getPost(slug);
+  const locale = await getLocale(params);
+  const t = dictionaries[locale];
+  const post = await getPost(slug, locale);
   if (!post) notFound();
   const textBlocks = post.body.filter(
     (block): block is PortableTextBlock => block._type === "block",
@@ -52,27 +85,37 @@ export default async function BlogPostPage({ params }: Props) {
     1,
     Math.ceil(toPlainText(textBlocks).split(/\s+/).length / 200),
   );
+  const paths: Record<Locale, string> = { en: "/blog", tr: "/tr/blog" };
+  paths[locale] = localizedPath(locale, `/blog/${post.slug}`);
+  for (const translation of post.translations || [])
+    paths[translation.locale] = localizedPath(
+      translation.locale,
+      `/blog/${translation.slug}`,
+    );
   return (
     <main className="flex flex-col">
+      <ArticleLanguageLinks paths={paths} />
       <header className="min-h-120 relative flex items-center justify-center overflow-hidden py-24">
         <div className="absolute inset-0 dot-splash z-10" />
         <div className="absolute inset-0 bg-gradient-to-br from-sky-950/60 via-black to-cyan-950/40" />
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
         <div className="container mx-auto px-4 relative z-20 flex flex-col gap-3">
           <Link
-            href="/blog"
+            href={localizedPath(locale, "/blog")}
             className="text-xs text-foreground/40 hover:text-white mb-2"
           >
-            ← Tüm yazılar
+            ← {t.allPosts}
           </Link>
           <div className="flex flex-wrap items-center gap-3 text-xs text-foreground/40">
             <span>{post.category}</span>
             <span>·</span>
             <time dateTime={post.publishedAt}>
-              {formatDate(post.publishedAt)}
+              {formatDate(post.publishedAt, locale)}
             </time>
             <span>·</span>
-            <span>{readTime} dk okuma</span>
+            <span>
+              {readTime} {t.minutes}
+            </span>
           </div>
           <h1 className="text-3xl md:text-4xl font-bold tracking-tight max-w-3xl leading-tight">
             {post.title}
@@ -100,7 +143,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="grid lg:grid-cols-[220px_minmax(0,1fr)] gap-10 lg:gap-16">
           {headings.length > 0 && (
             <aside className="hidden lg:block">
-              <TableOfContents sections={headings} />
+              <TableOfContents sections={headings} title={t.contents} />
             </aside>
           )}
           <article
@@ -135,10 +178,10 @@ export default async function BlogPostPage({ params }: Props) {
               </div>
             )}
             <Link
-              href="/blog"
+              href={localizedPath(locale, "/blog")}
               className="block mt-8 border-t border-foreground/10 pt-6 text-xs text-foreground/40 hover:text-white"
             >
-              ← Tüm yazılar
+              ← {t.allPosts}
             </Link>
           </article>
         </div>

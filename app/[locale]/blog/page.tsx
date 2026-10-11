@@ -1,15 +1,31 @@
 import type { Metadata } from "next";
-import BlogCard from "../components/BlogCard";
-import PageHeader from "../components/PageHeader";
-import { formatDate, getPosts, getSettings } from "../sanity/content";
+import BlogCard from "../../components/BlogCard";
+import PageHeader from "../../components/PageHeader";
+import { getPosts, getSettings } from "../../sanity/content";
+import {
+  dictionaries,
+  formatDate,
+  languageAlternates,
+  localizedPath,
+} from "../../i18n/config";
+import { getLocale, type LocaleProps } from "../../i18n/server";
 
-export const metadata: Metadata = {
-  title: "Blog",
-  alternates: { canonical: "/blog" },
-};
+export async function generateMetadata({
+  params,
+}: LocaleProps): Promise<Metadata> {
+  const locale = await getLocale(params);
+  return {
+    title: dictionaries[locale].blog,
+    alternates: languageAlternates(localizedPath(locale, "/blog")),
+  };
+}
 
-export default async function BlogPage() {
-  const [posts, settings] = await Promise.all([getPosts(), getSettings()]);
+export default async function BlogPage({ params }: LocaleProps) {
+  const locale = await getLocale(params);
+  const [posts, settings] = await Promise.all([
+    getPosts(locale),
+    getSettings(locale),
+  ]);
   return (
     <main className="flex flex-col">
       <PageHeader>
@@ -29,14 +45,15 @@ export default async function BlogPage() {
                 title={post.title}
                 image={post.coverImage}
                 excerpt={post.excerpt}
-                date={formatDate(post.publishedAt)}
+                locale={locale}
+                date={formatDate(post.publishedAt, locale)}
                 slug={post.slug}
                 category={post.category}
               />
             ))}
           </div>
         ) : (
-          <p className="text-foreground/50">Henüz yayınlanmış yazı yok.</p>
+          <p className="text-foreground/50">{dictionaries[locale].noPosts}</p>
         )}
       </section>
     </main>

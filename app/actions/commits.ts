@@ -22,9 +22,7 @@ export const getLatestCommits = unstable_cache(
             message: commit.commit.message,
             url: commit.html_url,
             repo: "arda-portfolio",
-            date: new Date(
-              commit.commit.author?.date || new Date(),
-            ).toLocaleDateString("tr-TR", { day: "2-digit", month: "short" }),
+            date: commit.commit.author?.date || new Date().toISOString(),
             sha: commit.sha,
           };
         })

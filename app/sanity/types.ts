@@ -1,4 +1,5 @@
 import type { PortableTextBlock } from "@portabletext/types";
+import type { Locale } from "../i18n/config";
 
 export type Color = "blue" | "green" | "orange" | "default";
 export type RichTextNode =
@@ -31,6 +32,7 @@ export interface Project {
   featured: boolean;
 }
 export interface Post {
+  translations?: { locale: Locale; slug: string }[];
   _id: string;
   title: string;
   slug: string;
