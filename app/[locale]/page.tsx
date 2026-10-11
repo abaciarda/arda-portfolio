@@ -92,7 +92,7 @@ export default async function Home({ params }: LocaleProps) {
             {commits.length ? (
               commits.map((commit) => (
                 <div
-                  key={commit.sha}
+                  key={`${commit.repo}:${commit.sha}`}
                   className="flex flex-wrap items-center gap-1 font-light text-foreground/50"
                 >
                   <span>{formatDate(commit.date, locale, true)} –</span>

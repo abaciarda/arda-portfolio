@@ -42,7 +42,7 @@ The Studio is published at https://arda-portfolio-w78zoc2a.sanity.studio/ with a
 
 ## Cloudflare
 
-Add the public project ID and dataset to the Cloudflare build environment. Set `SANITY_WEBHOOK_SECRET` as a runtime Worker secret. Keep the existing `OCTOKIT_TOKEN` secret if the GitHub activity feed is desired. Never put the migration write token in Cloudflare or any `NEXT_PUBLIC_` variable.
+Add the public project ID and dataset to the Cloudflare build environment. Set `SANITY_WEBHOOK_SECRET` as a runtime Worker secret. `OCTOKIT_TOKEN` is optional for the public GitHub activity feed. Never put the migration write token in Cloudflare or any `NEXT_PUBLIC_` variable.
 
 The integration uses the standard Next.js fetch cache with a 60-second revalidation interval, plus a signed webhook. It does not require a database or CMS server in the Worker. OpenNext caching must be configured for persistent cache behavior across Worker instances; the current repository uses OpenNext's default cache configuration. Verify production publishing behavior before launch; persistent R2 caching can be configured separately if needed.
 
@@ -83,6 +83,8 @@ UI labels are in `app/i18n/config.ts`. Dates, document language, canonical URLs,
 Layouts and presentation remain in React. New block types require a matching schema and React renderer.
 
 ## Verification
+
+The homepage activity feed shows the latest five public pushes by `abaciarda` across repositories, using each push's head commit message. A GitHub token is optional; invalid tokens fall back to anonymous public access. Requests for the event feed refresh after five minutes, while immutable commit lookups are cached for a day. GitHub's Events API can itself be delayed and is not a complete commit-history API. Private activity is excluded. Remove or replace a rejected `OCTOKIT_TOKEN` in local environment files and Cloudflare secrets.
 
 Run `npm run lint`, `npm test`, `npx tsc --noEmit --incremental false`, `npm --prefix studio run typecheck`, `npm --prefix studio run schema:extract`, `npm --prefix studio run typegen`, `npm run build`, and `npm run studio:build`. Type generation removes generated code comments to follow the project's code style.
 
