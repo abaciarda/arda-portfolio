@@ -48,6 +48,7 @@ export interface Post {
   seoDescription?: string;
 }
 export interface SiteSettings {
+  homepageProjectsSource?: "featured" | "github";
   siteTitle: string;
   description: string;
   navigation: { _key: string; label: string; href: string }[];

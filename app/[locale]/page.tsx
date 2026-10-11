@@ -2,7 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getLatestCommits } from "../actions/commits";
-import { getProfile, getProjects } from "../sanity/content";
+import { getProfile, getProjects, getSettings } from "../sanity/content";
+import { env } from "../env";
+import {
+  loadGitHubProjects,
+  resolveHomepageProjects,
+} from "../lib/github-projects";
 import PageHeader from "../components/PageHeader";
 import { Skills, SocialLinks } from "../components/ProfileDetails";
 import {
@@ -26,11 +31,18 @@ export async function generateMetadata({
 export default async function Home({ params }: LocaleProps) {
   const locale = await getLocale(params);
   const t = dictionaries[locale];
-  const [profile, projects, commits] = await Promise.all([
+  const [profile, projects, commits, settings] = await Promise.all([
     getProfile(locale),
     getProjects(locale),
     getLatestCommits(),
+    getSettings(locale),
   ]);
+  const homepageProjects = await resolveHomepageProjects({
+    source: settings.homepageProjectsSource,
+    projects,
+    loadRepositories: () =>
+      loadGitHubProjects({ username: "abaciarda", token: env.OCTOKIT_TOKEN }),
+  });
   return (
     <main className="flex flex-col">
       <PageHeader>
@@ -66,20 +78,34 @@ export default async function Home({ params }: LocaleProps) {
         <div className="flex flex-col gap-10">
           <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-semibold">{t.myProjects}</h2>
-            {projects
-              .filter((project) => project.featured)
-              .map((project) => (
-                <div
-                  key={project._id}
-                  className="flex items-center justify-between gap-2"
-                >
+            {!homepageProjects.projects.length && (
+              <p className="text-foreground/50 font-light">{t.noProjects}</p>
+            )}
+            {homepageProjects.projects.map((project) => (
+              <div
+                key={project._id}
+                className="flex items-center justify-between gap-2"
+              >
+                {project.href ? (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium hover:text-foreground/70 transition-colors"
+                  >
+                    {project.title}
+                  </a>
+                ) : (
                   <span className="font-medium">{project.title}</span>
-                  <div className="flex-1 border-t border-foreground/[0.06] border-dashed" />
-                  <span className="text-foreground/60 whitespace-nowrap hidden md:block">
-                    {project.date}
-                  </span>
-                </div>
-              ))}
+                )}
+                <div className="flex-1 border-t border-foreground/[0.06] border-dashed" />
+                <span className="text-foreground/60 whitespace-nowrap hidden md:block">
+                  {homepageProjects.source === "github"
+                    ? formatDate(project.date, locale, true)
+                    : project.date}
+                </span>
+              </div>
+            ))}
             <Link
               href={localizedPath(locale, "/projects")}
               className="text-sm text-foreground/50 hover:text-white"

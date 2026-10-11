@@ -977,6 +977,23 @@
         },
         "optional": true
       },
+      "homepageProjectsSource": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "union",
+          "of": [
+            {
+              "type": "string",
+              "value": "featured"
+            },
+            {
+              "type": "string",
+              "value": "github"
+            }
+          ]
+        },
+        "optional": true
+      },
       "projectsIntroduction": {
         "type": "objectAttribute",
         "value": {

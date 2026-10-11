@@ -89,3 +89,8 @@ The homepage activity feed shows the latest five public pushes by `abaciarda` ac
 Run `npm run lint`, `npm test`, `npx tsc --noEmit --incremental false`, `npm --prefix studio run typecheck`, `npm --prefix studio run schema:extract`, `npm --prefix studio run typegen`, `npm run build`, and `npm run studio:build`. Type generation removes generated code comments to follow the project's code style.
 
 After import, check every page, cover images, all custom block types, heading links, author references, and an unknown article URL. Publish a small edit and confirm the live website updates. Draft edits must stay private.
+# Homepage projects
+
+In Site settings → English or Türkçe, use **Homepage projects source** to choose **Selected projects** or **Latest GitHub repositories**, then publish the settings document. Missing settings default to selected projects.
+
+Selected mode shows up to five projects with **Show on homepage** enabled, in their **Display order**. GitHub mode shows the five public repositories owned by `abaciarda` with the latest push dates, refreshed every five minutes. Each name links to its repository. If GitHub is unavailable, selected projects provide a fallback. The full Projects page continues to use your Sanity project descriptions and images.

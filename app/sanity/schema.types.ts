@@ -147,6 +147,7 @@ export type SiteSettings = {
     _key: string;
   }>;
   projectsTitle?: string;
+  homepageProjectsSource?: "featured" | "github";
   projectsIntroduction?: string;
   blogTitle?: string;
   blogIntroduction?: string;

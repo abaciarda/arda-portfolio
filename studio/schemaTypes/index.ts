@@ -523,6 +523,29 @@ const siteSettings = defineType({
       validation: (rule) => rule.required().min(1),
     }),
     requiredString("projectsTitle"),
+    defineField({
+      name: "homepageProjectsSource",
+      title: "Homepage projects source",
+      type: "string",
+      description:
+        "Choose up to five featured Sanity projects, or the five public GitHub repositories with the latest pushes. Configure this separately for each language.",
+      initialValue: "featured",
+      options: {
+        layout: "radio",
+        list: [
+          { title: "Selected projects (Show on homepage)", value: "featured" },
+          { title: "Latest GitHub repositories", value: "github" },
+        ],
+      },
+      validation: (rule) =>
+        rule.custom(
+          (value) =>
+            !value ||
+            value === "featured" ||
+            value === "github" ||
+            "Choose a projects source.",
+        ),
+    }),
     defineField({ name: "projectsIntroduction", type: "text" }),
     requiredString("blogTitle"),
     defineField({ name: "blogIntroduction", type: "text" }),
