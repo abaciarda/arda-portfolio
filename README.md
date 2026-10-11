@@ -12,3 +12,10 @@ Zamanla yeni projeler ve içeriklerle genişletmeye devam ediyorum.
 ```bash
 npm install
 npm run dev
+```
+
+## Content management
+
+Sanity Studio runs separately from the Next.js website. Start it with `npm run studio:dev` after installing its dependencies with `npm install --prefix studio`.
+
+See [Sanity setup](docs/sanity-setup.md) for content import, editing, Studio hosting, and Cloudflare configuration.

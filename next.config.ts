@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'opengraph.githubassets.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        pathname: '/images/w78zoc2a/**'
       }
     ]
   }
