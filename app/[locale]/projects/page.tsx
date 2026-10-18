@@ -26,7 +26,7 @@ function ProjectContent({ project }: { project: Project }) {
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2">
           {project.href?.startsWith("https://github.com/") && (
-            <SiGithub className="shrink-0" />
+            <SiGithub aria-hidden="true" focusable="false" className="shrink-0" />
           )}
           <h2 className="text-sm">{project.title}</h2>
         </div>
@@ -48,7 +48,7 @@ function ProjectContent({ project }: { project: Project }) {
       <div className="flex items-center gap-4">
         {project.commits > 0 && (
           <div className="flex items-center gap-1">
-            <GoCommit className="text-sm" />
+            <GoCommit aria-hidden="true" focusable="false" className="text-sm" />
             <span className="text-xs text-foreground/70 font-light">
               {project.commits}
             </span>

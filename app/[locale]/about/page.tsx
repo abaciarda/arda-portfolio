@@ -35,7 +35,7 @@ export default async function AboutPage({ params }: LocaleProps) {
             alt={profile.name}
             width={152}
             height={152}
-            priority
+            loading="eager"
             className="size-38 rounded-full object-cover"
           />
           <div>

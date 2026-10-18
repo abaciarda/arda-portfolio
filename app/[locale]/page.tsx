@@ -50,7 +50,7 @@ export default async function Home({ params }: LocaleProps) {
             alt={profile.name}
             width={128}
             height={128}
-            priority
+            loading="eager"
             className="size-32 rounded-full mb-2 object-cover"
           />
           <h1 className="text-3xl font-semibold">{profile.greeting}</h1>

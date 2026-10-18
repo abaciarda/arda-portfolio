@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navigation from "../components/Navigation";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Analytics from "../components/Analytics";
 import { getProfile, getSettings } from "../sanity/content";
 import { getLocale, type LocaleProps } from "../i18n/server";
 import { languageAlternates, locales, localizedPath } from "../i18n/config";
@@ -144,7 +144,7 @@ export default async function RootLayout({
           <Navigation items={settings.navigation} locale={locale} />
           {children}
         </LanguageLinksProvider>
-        <GoogleAnalytics gaId="G-PC1M1B3MJM" />
+        <Analytics />
       </body>
     </html>
   );

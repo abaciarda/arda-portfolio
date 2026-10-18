@@ -43,6 +43,20 @@ for (const url of urls) {
   const ogUrl = html.match(/<meta property="og:url" content="([^"]+)"/)?.[1];
   assert.equal(new URL(ogUrl).href, url, `Social URL mismatch: ${path}`);
   assert.equal((html.match(/<h1[\s>]/g) || []).length, 1, path);
+  if (!/\/blog\/.+/.test(path)) {
+    const head = html.slice(0, html.indexOf("</head>"));
+    const splash = [...head.matchAll(/<link\b[^>]*>/g)].map((match) => match[0])
+      .filter((tag) => tag.includes('href="/assets/images/splash-bg.webp"'));
+    assert.equal(splash.length, 1, `Missing or duplicate hero preload: ${path}`);
+    assert.match(splash[0], /rel="preload"/);
+    assert.match(splash[0], /as="image"/);
+    assert.match(splash[0], /fetchPriority="high"/i);
+  }
+  for (const svg of html.matchAll(/<svg\b[^>]*>/g)) {
+    assert.match(svg[0], /aria-hidden="true"/, `Unlabelled decorative icon: ${path}`);
+    assert.match(svg[0], /focusable="false"/, `Focusable decorative icon: ${path}`);
+  }
+  assert.ok(!/<script[^>]+src="https:\/\/www.googletagmanager.com/.test(html), `Analytics downloaded during initial HTML parsing: ${path}`);
   const graphs = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)]
     .flatMap((match) => { const data = JSON.parse(match[1]); return data["@graph"] || [data]; });
   assert.ok(graphs.some((item) => item["@type"] === "Person"));
@@ -66,4 +80,4 @@ assert.equal((await fetch(`${base}/blog/does-not-exist`, { headers })).status, 4
 const redirect = await fetch(`${base}/en/about`, { redirect: "manual" });
 assert.equal(redirect.status, 308);
 assert.equal(new URL(redirect.headers.get("location"), base).pathname, "/about");
-console.log(`SEO checks passed for all ${urls.length} sitemap URLs, structured data, metadata, crawler rules, redirects, and missing articles.`);
+console.log(`Checks passed for all ${urls.length} sitemap URLs, hero preloads, decorative icons, analytics, structured data, metadata, crawler rules, redirects, and missing articles.`);

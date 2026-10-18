@@ -50,7 +50,7 @@ export default function BlogCard({
 
       <div className="mt-2 flex items-center gap-1.5 text-[11px] font-light text-foreground/30 group-hover:text-foreground/80 transition-colors">
         <span>{dictionaries[locale].readArticle}</span>
-        <FaChevronRight className="text-[8px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+        <FaChevronRight aria-hidden="true" focusable="false" className="text-[8px] opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
       </div>
     </Link>
   );

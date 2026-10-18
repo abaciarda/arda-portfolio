@@ -46,7 +46,7 @@ export function Skills({ items }: { items: string[] }) {
             key={item}
             className="flex items-center gap-2 px-3 py-1.5 bg-black/20 border border-white/10 rounded text-white/70 hover:text-white hover:border-white/20 transition-all duration-200"
           >
-            {Icon && <Icon className={`${match[1]} text-sm`} />}
+            {Icon && <Icon aria-hidden="true" focusable="false" className={`${match[1]} text-sm`} />}
             <span className="text-sm">{item}</span>
           </div>
         );
@@ -98,7 +98,7 @@ export function SocialLinks({
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-1.5 bg-black/20 rounded border border-white/5 hover:bg-black/30 transition-colors"
           >
-            <Icon className={color} />
+            <Icon aria-hidden="true" focusable="false" className={color} />
             <span className="text-sm text-white/80">{label}</span>
           </a>
         ))}
