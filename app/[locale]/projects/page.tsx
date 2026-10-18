@@ -1,3 +1,4 @@
+import { pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { GoCommit } from "react-icons/go";
@@ -8,8 +9,6 @@ import { SocialLinks } from "../../components/ProfileDetails";
 import type { Project } from "../../sanity/types";
 import {
   dictionaries,
-  languageAlternates,
-  localizedPath,
 } from "../../i18n/config";
 import { getLocale, type LocaleProps } from "../../i18n/server";
 
@@ -17,10 +16,8 @@ export async function generateMetadata({
   params,
 }: LocaleProps): Promise<Metadata> {
   const locale = await getLocale(params);
-  return {
-    title: dictionaries[locale].projects,
-    alternates: languageAlternates(localizedPath(locale, "/projects")),
-  };
+  const [profile, settings] = await Promise.all([getProfile(locale), getSettings(locale)]);
+  return pageMetadata({ locale, path: "/projects", title: dictionaries[locale].projects, description: settings.projectsIntroduction, profile, siteName: settings.siteTitle });
 }
 
 function ProjectContent({ project }: { project: Project }) {

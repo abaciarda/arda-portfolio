@@ -1,3 +1,5 @@
+import JsonLd from "../components/JsonLd";
+import { personData, SITE_URL } from "../lib/seo";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
@@ -127,13 +129,17 @@ export default async function RootLayout({
 }> &
   LocaleProps) {
   const locale = await getLocale(params);
-  const settings = await getSettings(locale);
+  const [settings, profile] = await Promise.all([getSettings(locale), getProfile(locale)]);
   return (
     <html
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <JsonLd data={{ "@context": "https://schema.org", "@graph": [
+          personData(profile),
+          { "@type": "WebSite", "@id": SITE_URL + "/#website", url: SITE_URL, name: profile.name, description: settings.description, inLanguage: ["en", "tr"], publisher: { "@id": SITE_URL + "/#person" } },
+        ] }} />
         <LanguageLinksProvider>
           <Navigation items={settings.navigation} locale={locale} />
           {children}

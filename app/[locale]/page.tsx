@@ -1,3 +1,4 @@
+import { pageMetadata } from "../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -13,7 +14,6 @@ import { Skills, SocialLinks } from "../components/ProfileDetails";
 import {
   dictionaries,
   formatDate,
-  languageAlternates,
   localizedPath,
 } from "../i18n/config";
 import { getLocale, type LocaleProps } from "../i18n/server";
@@ -22,10 +22,8 @@ export async function generateMetadata({
   params,
 }: LocaleProps): Promise<Metadata> {
   const locale = await getLocale(params);
-  return {
-    title: dictionaries[locale].home,
-    alternates: languageAlternates(localizedPath(locale)),
-  };
+  const [profile, settings] = await Promise.all([getProfile(locale), getSettings(locale)]);
+  return pageMetadata({ locale, title: `${profile.name} | ${profile.role}`, description: settings.description, profile, siteName: settings.siteTitle, home: true });
 }
 
 export default async function Home({ params }: LocaleProps) {

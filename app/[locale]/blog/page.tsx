@@ -1,12 +1,11 @@
+import { pageMetadata } from "../../lib/seo";
 import type { Metadata } from "next";
 import BlogCard from "../../components/BlogCard";
 import PageHeader from "../../components/PageHeader";
-import { getPosts, getSettings } from "../../sanity/content";
+import { getPosts, getSettings, getProfile } from "../../sanity/content";
 import {
   dictionaries,
   formatDate,
-  languageAlternates,
-  localizedPath,
 } from "../../i18n/config";
 import { getLocale, type LocaleProps } from "../../i18n/server";
 
@@ -14,10 +13,8 @@ export async function generateMetadata({
   params,
 }: LocaleProps): Promise<Metadata> {
   const locale = await getLocale(params);
-  return {
-    title: dictionaries[locale].blog,
-    alternates: languageAlternates(localizedPath(locale, "/blog")),
-  };
+  const [profile, settings] = await Promise.all([getProfile(locale), getSettings(locale)]);
+  return pageMetadata({ locale, path: "/blog", title: settings.blogTitle, description: settings.blogIntroduction, profile, siteName: settings.siteTitle });
 }
 
 export default async function BlogPage({ params }: LocaleProps) {

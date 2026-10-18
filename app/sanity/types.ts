@@ -40,6 +40,7 @@ export interface Post {
   coverImage: string;
   coverAlt?: string;
   publishedAt: string;
+  updatedAt?: string;
   category: string;
   tags: string[];
   author: Pick<Profile, "name" | "role" | "avatar"> | null;

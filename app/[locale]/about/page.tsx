@@ -1,12 +1,14 @@
+import JsonLd from "../../components/JsonLd";
+import { absoluteUrl, SITE_URL } from "../../lib/seo";
+import { pageMetadata } from "../../lib/seo";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { getProfile } from "../../sanity/content";
+import { getProfile, getSettings } from "../../sanity/content";
 import PageHeader from "../../components/PageHeader";
 import RichText from "../../components/RichText";
 import { Skills, SocialLinks } from "../../components/ProfileDetails";
 import {
   dictionaries,
-  languageAlternates,
   localizedPath,
 } from "../../i18n/config";
 import { getLocale, type LocaleProps } from "../../i18n/server";
@@ -15,10 +17,8 @@ export async function generateMetadata({
   params,
 }: LocaleProps): Promise<Metadata> {
   const locale = await getLocale(params);
-  return {
-    title: dictionaries[locale].about,
-    alternates: languageAlternates(localizedPath(locale, "/about")),
-  };
+  const [profile, settings] = await Promise.all([getProfile(locale), getSettings(locale)]);
+  return pageMetadata({ locale, path: "/about", title: dictionaries[locale].about, description: profile.introduction, profile, siteName: settings.siteTitle });
 }
 
 export default async function AboutPage({ params }: LocaleProps) {
@@ -27,6 +27,7 @@ export default async function AboutPage({ params }: LocaleProps) {
   const profile = await getProfile(locale);
   return (
     <main className="flex flex-col">
+      <JsonLd data={{ "@context": "https://schema.org", "@type": "ProfilePage", url: absoluteUrl(localizedPath(locale, "/about")), inLanguage: locale, mainEntity: { "@id": SITE_URL + "/#person" } }} />
       <PageHeader>
         <div className="flex flex-col md:flex-row items-center gap-5">
           <Image

@@ -1,3 +1,5 @@
+import JsonLd from "../../../components/JsonLd";
+import { absoluteUrl, postAlternates, SITE_URL } from "../../../lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -28,38 +30,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: {
-      canonical: localizedPath(locale, `/blog/${post.slug}`),
-      languages: {
-        ...Object.fromEntries(
-          (post.translations || [{ locale, slug: post.slug }]).map(
-            (translation) => [
-              translation.locale,
-              localizedPath(translation.locale, `/blog/${translation.slug}`),
-            ],
-          ),
-        ),
-        [locale]: localizedPath(locale, `/blog/${post.slug}`),
-        ...((post.translations || []).some((item) => item.locale === "en")
-          ? {
-              "x-default": localizedPath(
-                "en",
-                `/blog/${post.translations!.find((item) => item.locale === "en")!.slug}`,
-              ),
-            }
-          : {}),
-      },
-    },
+    alternates: postAlternates(post, locale),
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
+      tags: post.tags,
       authors: post.author ? [post.author.name] : [],
       url: `https://ardaabaci.com${localizedPath(locale, `/blog/${post.slug}`)}`,
       locale: locale === "en" ? "en_US" : "tr_TR",
       images: [{ url: post.coverImage, alt: post.coverAlt || post.title }],
     },
+    authors: post.author ? [{ name: post.author.name, url: absoluteUrl(localizedPath(locale, "/about")) }] : undefined,
     twitter: {
       card: "summary_large_image",
       title,
@@ -94,6 +78,27 @@ export default async function BlogPostPage({ params }: Props) {
     );
   return (
     <main className="flex flex-col">
+      <JsonLd data={{ "@context": "https://schema.org", "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": absoluteUrl(localizedPath(locale, "/blog/" + post.slug)) + "#article",
+          headline: post.title,
+          description: post.seoDescription || post.excerpt,
+          image: absoluteUrl(post.coverImage),
+          datePublished: post.publishedAt,
+          ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+          inLanguage: locale,
+          mainEntityOfPage: absoluteUrl(localizedPath(locale, "/blog/" + post.slug)),
+          author: post.author ? { "@type": "Person", name: post.author.name, url: absoluteUrl(localizedPath(locale, "/about")) } : undefined,
+          isPartOf: { "@id": SITE_URL + "/#website" },
+          keywords: post.tags.join(", "),
+        },
+        { "@type": "BreadcrumbList", itemListElement: [
+          { "@type": "ListItem", position: 1, name: t.home, item: absoluteUrl(localizedPath(locale)) },
+          { "@type": "ListItem", position: 2, name: t.blog, item: absoluteUrl(localizedPath(locale, "/blog")) },
+          { "@type": "ListItem", position: 3, name: post.title, item: absoluteUrl(localizedPath(locale, "/blog/" + post.slug)) },
+        ] },
+      ] }} />
       <ArticleLanguageLinks paths={paths} />
       <header className="min-h-120 relative flex items-center justify-center overflow-hidden py-24">
         <div className="absolute inset-0 dot-splash z-10" />
@@ -132,9 +137,9 @@ export default async function BlogPostPage({ params }: Props) {
                 height={28}
                 className="size-7 rounded-full object-cover"
               />
-              <span className="text-sm text-foreground/60 font-light">
+              <Link href={localizedPath(locale, "/about")} rel="author" className="text-sm text-foreground/60 font-light hover:text-white">
                 {post.author.name}
-              </span>
+              </Link>
             </div>
           )}
         </div>

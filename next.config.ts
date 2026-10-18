@@ -1,6 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [{
+      source: "/:path*",
+      headers: [{ key: "Link", value: '</llms.txt>; rel="describedby"; type="text/plain"' }],
+    }];
+  },
   async redirects() {
     return [
       { source: "/en", destination: "/", permanent: true },
