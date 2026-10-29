@@ -472,6 +472,40 @@ const profile = defineType({
       of: [defineArrayMember({ type: "string" })],
       validation: (rule) => rule.required().min(1),
     }),
+    defineField({
+      name: "experience",
+      type: "array",
+      of: [
+        defineArrayMember({
+          name: "experienceItem",
+          type: "object",
+          fields: [
+            requiredString("role"),
+            requiredString("company"),
+            defineField({ name: "employmentType", title: "Employment type", type: "string" }),
+            defineField({ name: "location", type: "string" }),
+            defineField({
+              name: "startDate",
+              title: "Start date",
+              type: "date",
+              validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: "endDate",
+              title: "End date",
+              description: "Leave empty for a current position.",
+              type: "date",
+            }),
+            defineField({
+              name: "highlights",
+              type: "array",
+              of: [defineArrayMember({ type: "string" })],
+            }),
+          ],
+          preview: { select: { title: "role", subtitle: "company" } },
+        }),
+      ],
+    }),
     ...["github", "linkedin", "instagram"].map((name) =>
       defineField({
         name,

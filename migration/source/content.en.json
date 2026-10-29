@@ -110,6 +110,42 @@
       "MySQL",
       "Git"
     ],
+    "experience": [
+      {
+        "_type": "experienceItem",
+        "_key": "experience-furtherup",
+        "role": "Maintainer & Full-Stack Engineer",
+        "company": "FurtherUp",
+        "employmentType": "Freelance Contractor",
+        "startDate": "2026-10-20"
+      },
+      {
+        "_type": "experienceItem",
+        "_key": "experience-farmasi",
+        "role": "Freelance Web Developer",
+        "company": "Independent Client Project (Farmasi Sales Consultant)",
+        "location": "Istanbul, Türkiye",
+        "startDate": "2025-04-01",
+        "endDate": "2025-06-01",
+        "highlights": [
+          "Delivered a Laravel-based application portal for a Farmasi independent sales consultant, centralizing customer submissions in an administrative dashboard.",
+          "Streamlined application review and campaign/content updates through dashboard workflows and responsive Tailwind CSS interfaces."
+        ]
+      },
+      {
+        "_type": "experienceItem",
+        "_key": "experience-modamix",
+        "role": "Freelance Web Developer",
+        "company": "Modamix Armatür",
+        "location": "Istanbul, Türkiye",
+        "startDate": "2024-05-01",
+        "endDate": "2024-06-01",
+        "highlights": [
+          "Built a full-stack corporate website using Laravel and MySQL, featuring a dynamic product catalog and responsive design.",
+          "Created a custom administrative dashboard that enables the company to independently manage products, categories, and website content."
+        ]
+      }
+    ],
     "github": "https://github.com/abaciarda",
     "linkedin": "https://www.linkedin.com/in/arda-abacı-631302320/",
     "instagram": "https://www.instagram.com/ardaabacii_/"

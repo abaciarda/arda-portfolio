@@ -15,9 +15,20 @@ export interface Profile {
   education: RichTextNode[];
   focus: RichTextNode[];
   skills: string[];
+  experience?: Experience[];
   github?: string;
   linkedin?: string;
   instagram?: string;
+}
+export interface Experience {
+  _key: string;
+  role: string;
+  company: string;
+  employmentType?: string;
+  location?: string;
+  startDate: string;
+  endDate?: string;
+  highlights?: string[];
 }
 export interface Project {
   _id: string;

@@ -774,6 +774,42 @@
       "MySQL",
       "Git"
     ],
+    "experience": [
+      {
+        "_type": "experienceItem",
+        "_key": "experience-furtherup",
+        "role": "Maintainer & Full-Stack Engineer",
+        "company": "FurtherUp",
+        "employmentType": "Serbest Sözleşmeli",
+        "startDate": "2026-10-20"
+      },
+      {
+        "_type": "experienceItem",
+        "_key": "experience-farmasi",
+        "role": "Serbest Web Geliştirici",
+        "company": "Bağımsız Müşteri Projesi (Farmasi Satış Danışmanı)",
+        "location": "İstanbul, Türkiye",
+        "startDate": "2025-04-01",
+        "endDate": "2025-06-01",
+        "highlights": [
+          "Bir Farmasi bağımsız satış danışmanı için müşteri başvurularını tek bir yönetim panelinde toplayan Laravel tabanlı bir başvuru portalı geliştirdim.",
+          "Panel iş akışları ve Tailwind CSS ile hazırlanan responsive arayüzlerle başvuru incelemeyi ve kampanya/içerik güncellemelerini kolaylaştırdım."
+        ]
+      },
+      {
+        "_type": "experienceItem",
+        "_key": "experience-modamix",
+        "role": "Serbest Web Geliştirici",
+        "company": "Modamix Armatür",
+        "location": "İstanbul, Türkiye",
+        "startDate": "2024-05-01",
+        "endDate": "2024-06-01",
+        "highlights": [
+          "Laravel ve MySQL ile dinamik ürün kataloğuna sahip, responsive bir kurumsal web sitesi geliştirdim.",
+          "Şirketin ürünleri, kategorileri ve site içeriğini kendi başına yönetebilmesini sağlayan özel bir yönetim paneli oluşturdum."
+        ]
+      }
+    ],
     "github": "https://github.com/abaciarda",
     "linkedin": "https://www.linkedin.com/in/arda-abacı-631302320/",
     "instagram": "https://www.instagram.com/ardaabacii_/"

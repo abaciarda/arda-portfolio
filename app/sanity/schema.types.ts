@@ -340,6 +340,17 @@ export type Profile = {
     _key: string;
   }>;
   skills?: Array<string>;
+  experience?: Array<{
+    role?: string;
+    company?: string;
+    employmentType?: string;
+    location?: string;
+    startDate?: string;
+    endDate?: string;
+    highlights?: Array<string>;
+    _type: "experienceItem";
+    _key: string;
+  }>;
   github?: string;
   linkedin?: string;
   instagram?: string;

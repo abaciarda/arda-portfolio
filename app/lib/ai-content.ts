@@ -109,6 +109,17 @@ export function llmsFull(content: AiContent[]): string {
     `Source: ${absoluteUrl(localizedPath(locale, "/about"))}`,
     profile.introduction,
     richTextMarkdown(profile.biography),
+    ...(profile.experience?.length
+      ? [
+          `### ${locale === "en" ? "Experience" : "Deneyim"}`,
+          ...profile.experience.map((item) =>
+            [
+              `- ${item.role}, ${[item.company, item.employmentType, item.location].filter(Boolean).join(", ")} (${item.startDate} – ${item.endDate || (locale === "en" ? "present" : "günümüz")})`,
+              ...(item.highlights || []).map((highlight) => `  - ${highlight}`),
+            ].join("\n"),
+          ),
+        ]
+      : []),
     `### ${locale === "en" ? "Education" : "Eğitim"}`,
     richTextMarkdown(profile.education),
     `### ${locale === "en" ? "Focus" : "Odak Alanları"}`,

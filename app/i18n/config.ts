@@ -31,6 +31,14 @@ export function formatDate(date: string, locale: Locale, short = false) {
   }).format(new Date(date));
 }
 
+export function formatMonth(date: string, locale: Locale) {
+  return new Intl.DateTimeFormat(locale === "en" ? "en-US" : "tr-TR", {
+    month: "short",
+    year: "numeric",
+    timeZone: "Europe/Istanbul",
+  }).format(new Date(date));
+}
+
 export const dictionaries = {
   en: {
     home: "Home",
@@ -39,6 +47,8 @@ export const dictionaries = {
     blog: "Blog",
     biography: "About Me",
     education: "Education",
+    experience: "Experience",
+    present: "Present",
     focus: "Focus Areas",
     techStack: "Tech Stack",
     myProjects: "My Projects",
@@ -64,6 +74,8 @@ export const dictionaries = {
     blog: "Blog",
     biography: "Hakkımda",
     education: "Eğitim",
+    experience: "Deneyim",
+    present: "Günümüz",
     focus: "Odak Alanlarım",
     techStack: "Tech Stack",
     myProjects: "Projelerim",

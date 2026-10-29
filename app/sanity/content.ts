@@ -20,7 +20,7 @@ const client = projectId
   : null;
 const image = (field: string, fallback: string) =>
   `coalesce(${field}.asset->url, ${fallback})`;
-const profileProjection = `name, greeting, role, summary, introduction, biography, education, focus, skills, github, linkedin, instagram, "avatar": ${image("avatar", '"/assets/images/avatar.jpeg"')}`;
+const profileProjection = `name, greeting, role, summary, introduction, biography, education, focus, skills, experience, github, linkedin, instagram, "avatar": ${image("avatar", '"/assets/images/avatar.jpeg"')}`;
 const projectProjection = `_id, title, href, date, description, "image": ${image("image", 'repositoryImageUrl, "/assets/images/repo-placeholder.webp"')}, "imageAlt": image.alt, "commits": coalesce(commits, 0), language, "featured": coalesce(featured, false)`;
 const postProjection = `_id, title, "slug": slug.current, excerpt, "coverImage": ${image("coverImage", '"/assets/images/repo-placeholder.webp"')}, "coverAlt": coverImage.alt, publishedAt, "updatedAt": _updatedAt, category, "tags": coalesce(tags, []), seoTitle, seoDescription, author->{name, role, "avatar": ${image("avatar", '"/assets/images/avatar.jpeg"')}}, body[]{..., _type == "articleImage" => {"url": asset->url}}, "translations": (*[_type == "translation.metadata" && references(^._id)][0].translations[].value->{locale, "slug": slug.current, "available": defined(publishedAt) && publishedAt <= now() && count(body) > 0})[available == true]{locale, slug}`;
 const publishedPosts = `_type == "post" && coalesce(locale, "tr") == $locale && defined(slug.current) && defined(publishedAt) && publishedAt <= now() && count(body) > 0`;
