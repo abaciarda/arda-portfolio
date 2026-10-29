@@ -650,19 +650,6 @@
       "icon": "github"
     },
     {
-      "title": "Modamix Armatür – Freelance Project (Closed Source)",
-      "href": "https://modamix.com.tr",
-      "date": "2024",
-      "description": "Closed-source e-ticaret ve kurumsal web platformu. Laravel tabanlı sistem ile ürün yönetimi, kategori yapısı ve CRUD işlemleri geliştirilmiştir. Mobil uyumlu arayüz, SEO optimizasyonu ve performans odaklı yapı ile müşteri dönüşüm oranlarının artırılması hedeflenmiştir. www.modamix.com.tr projesi için geliştirilmiştir.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "Laravel",
-        "color": "bg-red-500"
-      },
-      "icon": "laravel"
-    },
-    {
       "title": "Java Banking System",
       "href": "https://github.com/abaciarda/java-banking-system",
       "date": "22.10.25",
@@ -674,45 +661,6 @@
         "color": "bg-orange-400"
       },
       "icon": "github"
-    },
-    {
-      "title": "Atlasia Blog – Web App (Closed Source)",
-      "href": "#",
-      "date": "2026",
-      "description": "Next.js 16, TypeScript ve Tailwind CSS 4 kullanılarak geliştirilen modern ve performans odaklı blog platformu. MongoDB ve Mongoose ile veritabanı yönetimi, Better Auth ile güvenli kimlik doğrulama, Cloudinary görsel entegrasyonu ve detaylı bir admin paneline sahiptir. Responsive arayüz ve SEO optimizasyonu ön planda tutulmuştur.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "TypeScript",
-        "color": "bg-blue-400"
-      },
-      "icon": "laravel"
-    },
-    {
-      "title": "VerseCMS – Freelance Web App (Closed Source)",
-      "href": "#",
-      "date": "2025",
-      "description": "Closed-source CMS projesi. Next.js 15, TypeScript ve Tailwind CSS/SCSS ile geliştirilmiş modern içerik yönetim sistemi. MySQL ve Redis ile performans ve caching yapısı kurulmuş, Next-Auth v4 ile güvenli kimlik doğrulama sağlanmıştır. Kullanıcı yönetimi, içerik sistemi, sosyal modüller, rozet yapıları, haber sistemi, çoklu dil desteği ve admin paneli içeren modüler bir mimariye sahiptir.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "TypeScript",
-        "color": "bg-blue-400"
-      },
-      "icon": "laravel"
-    },
-    {
-      "title": "Ayşenur Uzun – Freelance Website (Closed Source)",
-      "href": "#",
-      "date": "2025",
-      "description": "Closed-source kurumsal web geliştirme projesi. Laravel 12, MySQL ve JavaScript kullanılarak dinamik içerik yönetimi sağlanan bir web sitesi geliştirilmiştir. Admin panel üzerinden içerik ve veri yönetimi, responsive UI ve SEO optimizasyonu uygulanmıştır.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "Laravel",
-        "color": "bg-red-500"
-      },
-      "icon": "laravel"
     }
   ],
   "profile": {

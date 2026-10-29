@@ -69,13 +69,6 @@ body {
   z-index: 1;
 }
 
-.project-card {
-  @apply flex flex-col gap-4 relative p-4 lg:p-5 min-h-45 transition-all duration-200 hover:bg-foreground/2;
-
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;

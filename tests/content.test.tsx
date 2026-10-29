@@ -92,8 +92,8 @@ test("unsafe rich text links cannot become executable URLs", () => {
   assert.ok(!markup.includes("javascript:"));
 });
 
-test("migration retains unique keys, seven projects, and valid author source content", () => {
-  assert.equal(source.projects.length, 7);
+test("migration retains unique keys, three projects, and valid author source content", () => {
+  assert.equal(source.projects.length, 3);
   assert.equal(source.posts.length, 1);
   assert.equal(source.posts[0].body.length, 29);
   const keys = source.posts[0].body.map(

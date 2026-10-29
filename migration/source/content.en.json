@@ -173,19 +173,6 @@
       "icon": "github"
     },
     {
-      "title": "Modamix Armatür – Freelance Project (Closed Source)",
-      "href": "https://modamix.com.tr",
-      "date": "2024",
-      "description": "A closed-source e-commerce and corporate website built with Laravel. The project includes product and category management, CRUD operations, a responsive interface, SEO improvements, and performance optimization for modamix.com.tr.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "Laravel",
-        "color": "bg-red-500"
-      },
-      "icon": "laravel"
-    },
-    {
       "title": "Java Banking System",
       "href": "https://github.com/abaciarda/java-banking-system",
       "date": "22.10.25",
@@ -197,45 +184,6 @@
         "color": "bg-orange-400"
       },
       "icon": "github"
-    },
-    {
-      "title": "Atlasia Blog – Web App (Closed Source)",
-      "href": "#",
-      "date": "2026",
-      "description": "A modern blog platform built with Next.js 16, TypeScript, and Tailwind CSS 4. It includes MongoDB and Mongoose for data management, Better Auth authentication, Cloudinary images, and a comprehensive admin panel, with an emphasis on responsive design and SEO.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "TypeScript",
-        "color": "bg-blue-400"
-      },
-      "icon": "laravel"
-    },
-    {
-      "title": "VerseCMS – Freelance Web App (Closed Source)",
-      "href": "#",
-      "date": "2025",
-      "description": "A closed-source CMS built with Next.js 15, TypeScript, Tailwind CSS, and SCSS. MySQL and Redis support storage and caching, while NextAuth v4 handles authentication. Its modular architecture includes user and content management, social features, badges, news, multiple languages, and an admin panel.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "TypeScript",
-        "color": "bg-blue-400"
-      },
-      "icon": "laravel"
-    },
-    {
-      "title": "Ayşenur Uzun – Freelance Website (Closed Source)",
-      "href": "#",
-      "date": "2025",
-      "description": "A closed-source corporate website built with Laravel 12, MySQL, and JavaScript. An admin panel provides dynamic content management, alongside a responsive interface and SEO improvements.",
-      "image": "/assets/images/repo-placeholder.webp",
-      "commits": 0,
-      "language": {
-        "name": "Laravel",
-        "color": "bg-red-500"
-      },
-      "icon": "laravel"
     }
   ],
   "posts": [
